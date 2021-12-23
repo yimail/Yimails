@@ -10,10 +10,11 @@ class LettersController < ApplicationController
     @letter = Letter.new
   end
 
-  def create 
+  def create
     @letter = Letter.new(letter_params)
-
+  
     if @letter.save
+      UserSendEmailJob.perform_later(@letter)
       redirect_to letters_path
     else
       #
