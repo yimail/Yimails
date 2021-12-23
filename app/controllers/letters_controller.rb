@@ -3,7 +3,7 @@ class LettersController < ApplicationController
   before_action :find_letter, only:[:edit, :update, :destroy]
 
   def index
-    @letters = Letter.all
+    @letters = Letter.with_rich_text_content
   end
 
   def new
