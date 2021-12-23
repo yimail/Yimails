@@ -97,4 +97,7 @@ Rails.application.configure do
     authentication:       "plain",
     enable_starttls_auto: true  }
 
+  config.action_mailbox.ingress = :mailgun
+  config.hosts << ".ngrok.io"
+
 end
