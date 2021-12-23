@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: MyString
+  recipient: MyString
+  subject: MyString
+  content: MyText
+  carbon_copy: MyString
+  star: false
+  blind_carbon_copy: MyString
+
+two:
+  sender: MyString
+  recipient: MyString
+  subject: MyString
+  content: MyText
+  carbon_copy: MyString
+  star: false
+  blind_carbon_copy: MyString
