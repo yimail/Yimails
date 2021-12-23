@@ -9,6 +9,9 @@ gem 'bullet', '~> 7.0'
 # Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+# Parse HTML
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
