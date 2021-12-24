@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,  :authentication_keys => [:username]
 
-  validates :email, :uniqueness => {:allow_blank => true}
   validates :firstname, :lastname, :username, :backup_email, presence: true
   validates :username, uniqueness: true
 
+  # Devise內建的signup條件是email_required? True，在這裡重新定義
   def email_required?
     false
   end
