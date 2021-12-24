@@ -1,16 +1,21 @@
-<h2>Forgot your password?</h2>
+<div class="w-4/12 mx-auto mt-10">
+  <div class="bg-white shadow-md border border-gray-200 rounded-lg p-4">
+    <form class="space-y-6" action="#">
+      <h3 class="text-xl font-medium text-gray-900 dark:text-white">帳戶救援</h3>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      
+      <div class="field">
+        <%= f.label :請輸入備用信箱帳號, for:"email", class:"text-sm font-medium text-gray-900 mb-2 dark:text-gray-300" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", type:"email", name:"email", id:"email", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white", placeholder:"name@company.com", required:"" %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="actions">
+        <%= f.submit "送出", type:"submit", class:"w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+      </div>
+      
+      <% end %>
+      <%= render "devise/shared/links" %>  
+    </form>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
