@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :letters
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +11,5 @@ class User < ApplicationRecord
   # Devise內建的signup條件是email_required? True，在這裡重新定義
   def email_required?
     false
-  end
-
+  end    
 end
