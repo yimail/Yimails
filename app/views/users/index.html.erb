@@ -1,6 +1,17 @@
-<% name = current_user.present? ? current_user : 'Stranger' %>
+<div class="h-screen flex">
+  <div class="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
+    <div>
+      <h1 class="text-white font-bold text-9xl font-sans">Yimails</h1>
+    </div>
+  </div>
+  <div class="flex w-1/2 justify-center items-center bg-white">
+    <form class="bg-white">
+      <h1 class="text-gray-800 font-bold text-6xl mb-1">Hello!</h1>
+      
+      <%= link_to "註冊", new_user_registration_path, type:"submit", class:"block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 text-center" %>
 
-<h1>哈囉~</h1>
-<%= link_to "註冊", new_user_registration_path %>
-<%= link_to "登入", new_user_session_path %>
-<%= link_to "登出", destroy_user_session_path, method: 'delete' %>
+      <%= link_to "登入", new_user_session_path, type:"submit", class:"block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 text-center" %>
+      
+    </form>
+  </div>
+</div>
