@@ -13,10 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(user_params)
-    p"-"*100
-    puts @user.save
-    puts @user.errors.inspect
-    p"-"*100
     if @user.save
       redirect_to root_path
     else 
@@ -51,6 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
+  # 在signup時，Devise預設只有email (預設的authentication keys) 和 password 可以傳到model裡，新增欄位都要額外設定
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :lastname, :firstname, :backup_email])
   end
