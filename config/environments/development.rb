@@ -96,6 +96,6 @@ Rails.application.configure do
     enable_starttls_auto: true  }
 
   config.action_mailbox.ingress = :mailgun
-  config.hosts << ".ngrok.io"
-
+  config.hosts << ENV["HOST"]
+  
 end
