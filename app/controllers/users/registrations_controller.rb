@@ -13,8 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(user_params)
+    @user[:email] = "#{@user.username}@yimails.com"
     if @user.save
-      redirect_to root_path
+      redirect_to user_session_path
     else 
       render new
     end
