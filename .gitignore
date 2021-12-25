@@ -40,3 +40,5 @@ yarn-debug.log*
 /config/application.yml
 
 /config/credentials/production.key
+# Ignore application configuration
+/config/application.yml

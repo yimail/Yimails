@@ -31,16 +31,18 @@ class PostsMailbox < ApplicationMailbox
           content_id = attachment.content_id[1...-1]
           element = document.at_css "img[src='cid:#{content_id}']"
 
-          element.replace "<action-text-attachment 
+          element.replace 
+          "<action-text-attachment 
           sgid=\"#{blob.attachable_sgid}\" 
           content-type=\"#{attachment.content_type}\" 
           filename=\"#{attachment.filename}\"
           >
-                          </action-text-attachment>"
+          </action-text-attachment>"
         end
       end
 
       document.at_css("body").inner_html.encode('utf-8')
+
     elsif mail.multipart? && mail.text_part
       mail.text_part.body.decoded
     else

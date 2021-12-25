@@ -1,4 +1,4 @@
 class ApplicationMailbox < ActionMailbox::Base
   # routing /something/i => :somewhere
-  routing :all => :posts
+  routing app: :posts
 end
