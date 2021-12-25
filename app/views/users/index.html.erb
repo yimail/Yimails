@@ -1,6 +1,7 @@
-<% name = current_user.present? ? current_user : 'Stranger' %>
-
-<h1>哈囉~</h1>
-<%= link_to "註冊", new_user_registration_path %>
-<%= link_to "登入", new_user_session_path %>
-<%= link_to "登出", destroy_user_session_path, method: 'delete' %>
+<% if user_signed_in? %>
+  <%= current_user.email%>
+  <%= link_to "登出", destroy_user_session_path, method: 'delete', class:'text-2xl' %>
+<% else %>
+  <%= link_to "註冊", new_user_registration_path, class:'text-2xl'%>
+  <%= link_to "登入", new_user_session_path, class:'text-2xl' %>
+<% end %>
