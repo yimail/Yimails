@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       redirect_to user_session_path
     else 
-      render new
+      render :new
     end
   end
 
