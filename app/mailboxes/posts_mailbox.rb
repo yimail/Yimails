@@ -9,6 +9,7 @@ class PostsMailbox < ApplicationMailbox
 
   def attachments
     @_attachments = mail.attachments.map do |attachment|
+      byebug
       blob = ActiveStorage::Blob.create_after_upload!(
         io: StringIO.new(attachment.body.to_s),
         filename: attachment.filename,
