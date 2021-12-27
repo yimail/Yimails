@@ -1,0 +1,13 @@
+<div class="w-4/12 mx-auto mt-10">
+  <div class="bg-white shadow-md border border-gray-200 rounded-lg p-4">
+    <div class="space-y-6">
+      <h2  class="text-xl font-medium text-gray-900"><%= I18n.t('authy_register_title', scope: 'devise') %></h2>
+
+      <%= enable_authy_form do %>
+        <%= text_field_tag :country_code, '', :autocomplete => :off, :placeholder => I18n.t('devise.country'), :id => "authy-countries"%>
+        <%= text_field_tag :cellphone, '', :autocomplete => :off, :placeholder => I18n.t('devise.cellphone'), :id => "authy-cellphone"%>
+        <p><%= submit_tag I18n.t('enable_authy', scope: 'devise') %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

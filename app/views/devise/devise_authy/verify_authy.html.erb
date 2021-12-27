@@ -1,0 +1,48 @@
+<div class="w-4/12 mx-auto mt-10">
+  <div class="bg-white shadow-md border border-gray-200 rounded-lg p-4">
+    <div class="space-y-6">
+      <h2 class="text-xl font-medium text-gray-900">
+        <%= I18n.t('submit_token_title', scope: 'devise') %>
+      </h2>
+
+      <%= verify_authy_form do %>
+        <div class="">
+        <%= label_tag 'authy-token'%>
+        <%= text_field_tag :token, "", :autocomplete => "one-time-code", :inputmode => "numeric", :pattern => "[0-9]*", :id => 'authy-token', class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-6/12 p-2.5" %>
+        </div>
+ 
+        <label>
+          <%= check_box_tag :remember_device %>
+          <span><%= I18n.t('remember_device', scope: 'devise') %></span>
+        </label>
+
+        <!-- Help tooltip -->
+        <!-- You need to configure a help message. -->
+        <!-- See documentation: https://github.com/authy/authy-form-helpers#help-tooltip -->
+        <!-- <%= link_to '?', '#', :id => 'authy-help' %> -->
+        <div class="p-2.5">
+        <%= authy_request_sms_link%> 
+        <span class="text-xs text-gray-700"> press this button to receive the SMS </span>
+        </div>
+        <%= submit_tag I18n.t('submit_token', scope: 'devise'), :class => 'btn', :style => "color: white; background-color: #1D4ED8; border-radius:10px "%>
+      <% end %>
+
+      <% if @onetouch_uuid %>
+          <script>
+            (function(){
+              var onetouchInterval = setInterval(function(){
+                var onetouchRequest = new XMLHttpRequest();
+                var rememberDevice = document.getElementById("remember_device").checked ? '1' : '0';
+                onetouchRequest.addEventListener("load", function(){
+                  if(this.status != 202) clearInterval(onetouchInterval);
+                  if(this.status == 200) window.location = JSON.parse(this.responseText).redirect;
+                });
+                onetouchRequest.open("GET", "<%= polymorphic_path [resource_name, :authy_onetouch_status] %>?remember_device="+rememberDevice+"&onetouch_uuid=<%= @onetouch_uuid %>");
+                onetouchRequest.send();
+              }, 3000);
+            })();
+          </script>
+      <% end %>
+    </div>
+  </div>
+</div>
