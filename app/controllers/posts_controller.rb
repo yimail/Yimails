@@ -3,8 +3,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @posts = Post.includes([:rich_text_body])
   end
 
+  def show
+  end
+  
   private
     def set_post
       @post = Post.find(params[:id])
