@@ -1,5 +1,6 @@
 class LettersController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :find_letter, only:[:edit, :update, :destroy]
 
   def index
@@ -11,13 +12,14 @@ class LettersController < ApplicationController
   end
 
   def create
-    @letter = Letter.new(letter_params)
-  
+    @letter = current_user.letters.build(letter_params)
+    @letter[:sender] = current_user.email
+
     if @letter.save
       UserSendEmailJob.perform_later(@letter)
       redirect_to letters_path
     else
-      #
+      render :new
     end
   end
 
