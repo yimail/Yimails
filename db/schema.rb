@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_24_024106) do
+ActiveRecord::Schema.define(version: 2021_12_27_065838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,9 @@ ActiveRecord::Schema.define(version: 2021_12_24_024106) do
     t.string "lastname"
     t.string "firstname"
     t.string "backup_email"
+    t.string "authy_id"
+    t.datetime "last_sign_in_with_authy"
+    t.boolean "authy_enabled", default: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
