@@ -12,7 +12,9 @@
   <dd><%= @post.title %></dd>
   <dt>Body:</dt>
   <dd><%= @post.body %></dd>
+
 </dl>
+
 
 <% @post.attachments.each do |attachment| %>
   <div><%= link_to attachment.filename, attachment %></div>

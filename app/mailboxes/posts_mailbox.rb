@@ -9,7 +9,6 @@ class PostsMailbox < ApplicationMailbox
 
   def attachments
     @_attachments = mail.attachments.map do |attachment|
-      byebug
       blob = ActiveStorage::Blob.create_after_upload!(
         io: StringIO.new(attachment.body.to_s),
         filename: attachment.filename,
@@ -28,11 +27,9 @@ class PostsMailbox < ApplicationMailbox
         blob = attachment_hash[:blob]
 
         if attachment.content_id.present?
-          # Remove the beginning and end < >
-          content_id = attachment.content_id[1...-1]
-          element = document.at_css "img[src='cid:#{content_id}']"
+          child_div = Nokogiri::XML::Node.new('div', document)
 
-          element.replace "<action-text-attachment sgid=\"#{blob.attachable_sgid}\" content-type=\"#{attachment.content_type}\" filename=\"#{attachment.filename}\"></action-text-attachment>"
+          child_div.content = "<action-text-attachment sgid=\"#{blob.attachable_sgid}\" content-type=\"#{attachment.content_type}\" filename=\"#{attachment.filename}\"></action-text-attachment>"
         end
       end
 
