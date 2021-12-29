@@ -7,11 +7,11 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="name_container flex justify-between my-3">
-          <div class="field">
+          <div class="field w-2/4 mr-2.5">
             <%= f.label :姓氏, class:"text-sm font-medium text-gray-900 mb-2"%><br />
             <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
           </div>
-          <div class="field">
+          <div class="field w-2/4 ml-2.5">
             <%= f.label :名字, for:"firstname", class:"text-sm font-medium text-gray-900 mb-2"%><br />
             <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"%>
           </div>
@@ -28,11 +28,11 @@
 
         <div class="password_container my-3">
           <div class="password_wrap flex justify-between">
-            <div class="field">
+            <div class="field w-2/4 mr-2.5">
               <%= f.label :設定密碼, class:"text-sm font-medium text-gray-900 mb-2" %>
               <%= f.password_field :password, autocomplete: "new-password", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " %>
             </div>
-            <div class="field">
+            <div class="field w-2/4 ml-2.5">
               <%= f.label :確認密碼, class:"text-sm font-medium text-gray-900 mb-2" %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
             </div>
