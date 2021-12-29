@@ -5,10 +5,8 @@ ruby '2.7.4'
 
 # Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
-
 # Parse HTML
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
@@ -43,12 +41,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Fake Data
   gem 'faker', '~> 2.19'
-
   # N + 1
   gem 'bullet', '~> 7.0'
-
-  #fake data
-  gem 'faker', '~> 2.19'
 end
 
 group :development do
