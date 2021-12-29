@@ -249,6 +249,7 @@ DEPENDENCIES
   faker (~> 2.19)
   figaro (~> 1.2)
   image_processing (~> 1.2)
+  i18n (~> 1.6)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   nokogiri (~> 1.6, >= 1.6.8)
