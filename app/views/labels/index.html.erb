@@ -24,8 +24,8 @@
                 <td class="px-5 py-5 text-sm"><%= label.title %></td>
                 <td class="px-5 py-5 text-sm"><%= label.state %></td>
                 <td>
-                  <%= link_to "移除", label_path(label.id), method: 'delete', data: {confirm: '確認刪除?'}, class:"text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l"%>
-                  <%= link_to "編輯", edit_label_path(label.id), class:"text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r" %>
+                  <%= link_to "移除", label_path(label.id), method: 'delete', data: {confirm: '確認刪除?'}, class:"text-sm transition duration-150 hover:bg-gray-200 bg-gray-300 font-semibold py-2 px-4 rounded-l"%>
+                  <%= link_to "編輯", edit_label_path(label.id), class:"text-sm transition duration-150 hover:bg-gray-200 bg-gray-300 font-semibold py-2 px-4 rounded-r" %>
                 </td>
               </tr>
             <% end %>
