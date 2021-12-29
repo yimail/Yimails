@@ -62,6 +62,25 @@ ActiveRecord::Schema.define(version: 2021_12_23_084941) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "title"
+    t.string "state"
+    t.string "group"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_labels_on_user_id"
+  end
+
+  create_table "letter_with_labels", force: :cascade do |t|
+    t.bigint "letter_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_letter_with_labels_on_label_id"
+    t.index ["letter_id"], name: "index_letter_with_labels_on_letter_id"
+  end
+
   create_table "letters", force: :cascade do |t|
     t.string "sender"
     t.string "recipient"
@@ -102,4 +121,6 @@ ActiveRecord::Schema.define(version: 2021_12_23_084941) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "letter_with_labels", "labels"
+  add_foreign_key "letter_with_labels", "letters"
 end
