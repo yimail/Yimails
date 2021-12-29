@@ -1,0 +1,19 @@
+<div>
+  <%= link_to posts_path do %>
+    All Posts
+  <% end %>
+  <h1>Show post</h1>
+</div>
+
+<dl>
+  <dt>ID:</dt>
+  <dd><%= @post.id %></dd>
+  <dt>Title:</dt>
+  <dd><%= @post.title %></dd>
+  <dt>Body:</dt>
+  <dd><%= @post.body %></dd>
+</dl>
+
+<% @post.attachments.each do |attachment| %>
+  <div><%= link_to attachment.filename, attachment %></div>
+<% end %>

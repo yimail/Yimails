@@ -3,12 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.4'
 
-# N + 1
-gem 'bullet', '~> 7.0'
-
 # Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
-
+# Parse HTML
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
@@ -29,17 +27,15 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# ENV
 gem 'figaro', '~> 1.2'
 
-gem 'faker', '~> 2.19'
-
 gem 'devise-authy', '~> 2.3'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -54,6 +50,10 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Fake Data
+  gem 'faker', '~> 2.19'
+  # N + 1
+  gem 'bullet', '~> 7.0'
 end
 
 group :test do
