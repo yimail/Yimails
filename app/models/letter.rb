@@ -1,4 +1,6 @@
 class Letter < ApplicationRecord
+  acts_as_paranoid
+
   has_rich_text :content
   belongs_to :user
 
