@@ -6,7 +6,5 @@ Rails.application.routes.draw do
   root "users#index"
   resources :posts
   resources :labels
-  scope "(:locale)", locale: /en|zh-TW/ do
-    resources :letters
-  end
+  resources :letters
 end
