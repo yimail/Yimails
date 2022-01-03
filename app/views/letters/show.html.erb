@@ -5,7 +5,7 @@
     <div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
       <div class="flex items-center divide-x divide-gray-100">
         <div class="pr-3">
-          <a href="" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
+          <a href="javascript:history.back()" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
             </svg>
@@ -38,7 +38,9 @@
             </svg>
           </a>
         </div>
-        <div class="pl-3 text-sm font-medium text-gray-500">Today, 08:34 AM</div>
+        <div class="pl-3 text-sm font-medium text-gray-500">
+          <%= @letter.created_at.strftime("%Y/%m/%d %I:%M %p") %>
+        </div>
       </div>
       <div class="hidden sm:flex divide-x divide-gray-100 space-x-2 pl-0 sm:px-2">
         <div class="pr-2">
@@ -70,23 +72,30 @@
 
     <%# content %>
     <div class="p-5">
+      <h1 class="text-2xl font-bold text-gray-900 mb-4">
+        <%= @letter.subject %>
+      </h1>
       <div class="flex items-center mb-4">
         <div class="flex-shrink-0">
           <svg class="h-8 w-8 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <div class="ml-4">
-          <div class="text-base font-semibold text-gray-900 truncate">ERIK DENG</div>
-          <div class="text-sm text-normal text-gray-500">123@yimails.com</div>
+          <div class="flex">
+            <div class="text-base font-semibold text-gray-900 truncate">
+              <%= @letter.user.username %> 
+            </div>
+            <div class="text-xs text-gray-600 truncate m-auto">
+              <span><</span><%= @letter.sender %><span>></span>
+            </div>
+          </div>
+          <div class="text-xs text-normal text-gray-500">
+            <span>寄給 </span><%= @letter.recipient %>
+          </div>
         </div>
       </div>
-      <h1 class="text-2xl font-bold text-gray-900 mb-4">MERRY CHRISTMAS GUYS</h1>
       <div class="space-y-2">
         <p class="text-base font-normal text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo voluptatem quae praesentium quibusdam voluptatum eaque sit impedit veniam et ipsa sed ducimus architecto, qui, perferendis delectus iure fuga repellendus minus molestias perspiciatis, omnis similique! At similique soluta cupiditate cumque, reprehenderit voluptas debitis laboriosam quam assumenda ipsam dignissimos itaque? Accusamus quod corrupti asperiores aperiam perspiciatis quo vitae explicabo aliquam, expedita recusandae?
-        </p>
-        <p>
-          Best Regards,<br>
-          ERIK DENG, 5XRUBY
+          <%= @letter.content %>
         </p>
       </div>
     </div>
