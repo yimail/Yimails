@@ -4,4 +4,5 @@ class Letter < ApplicationRecord
 
   has_many :letter_with_label
   has_many :labels, through: :letter_with_label
+  has_many_attached :attachments
 end
