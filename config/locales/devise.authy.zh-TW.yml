@@ -1,0 +1,28 @@
+zh-TW:
+  devise:
+    submit_token: '確認金鑰'
+    submit_token_title: '請輸入您的金鑰:'
+    authy_register_title: '啟用兩段式驗證'
+    enable_authy: '啟用'
+    cellphone: '請輸入您的手機號碼'
+    country: '請輸入您的國家'
+    request_sms: '使用簡訊通知'
+    request_phone_call: '使用電話通知'
+    remember_device: '請記得用戶資訊'
+    request_to_login: '要求登入'
+
+    authy_verify_installation_title: '請驗證您的帳號'
+    enable_my_account: '啟用我的帳號'
+
+    authy_qr_code_alt: '使用您的身分驗證應用程式進行QR碼掃描'
+    authy_qr_code_instructions: '使用您的身分驗證應用程式進行QR碼掃描並輸入以下代碼'
+
+    devise_authy:
+      user:
+        enabled: '啟用兩段式驗證'
+        not_enabled: '啟用兩段式驗證時出錯'
+        disabled: '無法使用兩段式驗證'
+        not_disabled: '在取消兩段式驗證時出錯'
+        signed_in: '成功使用兩段式驗證登入'
+        already_enabled: '兩段式驗證已啟用'
+        invalid_token: '輸入的金鑰無效'

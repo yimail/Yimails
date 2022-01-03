@@ -22,8 +22,8 @@
             <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"rounded-xl border border-gray-300 text-gray-900 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600 w-full pl-10 p-2.5" %>
           <% end %>
         </div>
-        <li><%= link_to 'English', letters_path %></li>
-        <li><%= link_to '中文', letters_path %></li>
+        <li><%= link_to 'English', locale: 'en' %></li>
+        <li><%= link_to '中文', locale: 'zh-TW' %></li>
         <%# 漢堡選單 %>
         <div class="flex items-center ml-auto">
           <div class="dropdown inline-block relative items-center mr-10">
