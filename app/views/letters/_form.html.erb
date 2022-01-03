@@ -2,41 +2,42 @@
 <div id= navbar> 
   <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center justify-start ml-10">
+      <div class="flex items-center">
+        <%# logo %>
+        <div class="w-1/6 flex items-center justify-start ml-100">
           <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" class="h-6 mr-2" alt="Logo">
             <span class="self-center whitespace-nowrap">Yimail</span>
             <%# <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 396 60" class="h-5 mr-3"><path d="M71.63 1.046 43.57 35.262v23.63H28v-23.63L0 1.046h17.477l18.338 23.262L54.092 1.046h17.539Zm25.108 57.846h-15.63V1.046h15.63v57.846Zm107.077 0h-15.507V18.277L166.83 58.892h-14.954L130.4 18.277v40.615h-15.57V1.046H136L159.323 44.8l23.385-43.754h21.107v57.846Zm82.708 0h-15.63V53.17q-2.955 1.662-6.4 2.954-3.447 1.23-7.14 2.092-3.691.923-7.63 1.354-3.938.431-7.938.431-4.677 0-8.985-.862-4.37-.923-7.754-2.892-3.323-1.97-5.415-5.17-2.031-3.2-2.031-7.814 0-5.847 3.2-9.724 3.2-3.876 9.785-6.4 6.523-2.461 16.553-3.815 10.093-1.354 23.754-2.092V20q0-1.415-.738-2.83-.739-1.416-2.77-2.462-1.969-1.108-5.476-1.785-3.446-.677-8.8-.677-4.308 0-8.431.43-4.123.493-8 1.232-3.815.738-7.262 1.784-3.446.985-6.277 2.093V3.877q2.954-.739 6.585-1.477 3.692-.677 7.63-1.23 3.94-.493 8-.862 4-.308 7.755-.308 7.261 0 13.415 1.23 6.092 1.17 10.585 3.693 4.43 2.523 6.892 6.4 2.523 3.877 2.523 9.23v38.34Zm-15.63-18.769v-7.63q-8.985.369-15.262.984-6.277.615-10.462 1.477-4.184.8-6.523 1.784-2.4.985-3.57 1.97-1.168 1.046-1.476 2.03-.246.985-.246 1.847 0 1.046.554 1.969t1.907 1.661q1.354.739 3.631 1.108 2.277.43 5.723.43 3.816 0 7.508-.553 3.63-.615 6.892-1.662 3.323-.984 6.216-2.4 2.83-1.415 5.107-3.015Zm49.045 18.77H304.37V1.045h15.57v57.846Zm33.724-57.847v33.108q0 3.63.676 5.908.677 2.276 2.154 3.63 1.539 1.354 3.939 1.846 2.461.493 5.969.493H396v12.861h-32.8q-6.83 0-11.57-1.107-4.8-1.17-7.815-3.447Q340.8 52 339.446 48.37q-1.415-3.569-1.415-8.492V1.047h15.63Z"/></svg> %>
           </a>
-          <form action="#" method="GET" class="hidden lg:block lg:pl-24 ">
-            <label for="topbar-search" class="sr-only">Search</label>
-            <div class="mt-1 relative lg:w-96 ">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none ">
-                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <input type="text" name="email" id="topbar-search" class="rounded-xl border border-gray-300 text-gray-900 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-10 p-2.5" placeholder="<%= "#{t("search_mails")}" %>">
-            </div>
-          </form>
+        </div>
+        <%# 搜尋列 %>
+        <div class="w-3/6 mt-1 relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <%= form_tag letters_path(current_user), method: :get, class:"flex" do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"rounded-xl border border-gray-300 text-gray-900 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600 w-full pl-10 p-2.5" %>
+          <% end %>
         </div>
         <li><%= link_to 'English', letters_path %></li>
         <li><%= link_to '中文', letters_path %></li>
-        <div class="flex items-center ">
-          <button id="toggleSidebarMobileSearch" type="button" class="lg:hidden text-gray-500 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg ">
-            <span class="sr-only">Search</span>
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <div class="hidden lg:flex items-center">
-            <div>
-              <ul class="flex items-center space-x-5 ml-10 mr-14">
-                <a href="#"><svg class="h-8 w-8 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </a>
-              </ul>
+        <%# 漢堡選單 %>
+        <div class="flex items-center ml-auto">
+          <div class="dropdown inline-block relative items-center mr-10">
+            <div class="flex justify-items-center bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded items-center">
+              <a href="#"><svg class="h-8 w-8 text-gray-500 mr-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </a>
+              <%= current_user.username %>
             </div>
+            <ul class="dropdown-content w-32  absolute hidden text-gray-700 pt-1">
+              <li><%= link_to "重設密碼", edit_user_registration_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+              <li><%= link_to "兩階段認證", user_enable_authy_path, method: 'post', class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+              <li><%= link_to "其他設定", edit_user_registration_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+              <li><%= link_to "登出", destroy_user_session_path, method: 'delete', class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -45,8 +46,8 @@
 </div>
 
 <%# sidebar %>
-<div id=sidebar class="flex overflow-hidden bg-white pt-16">
-  <aside id="sidebar" class="fixed hidden z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
+<div id=sidebar class="flex overflow-hidden bg-white pt-16 w-4/12">
+  <aside id="sidebar" class="fixed hidden z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-1/6 transition-width duration-75" aria-label="Sidebar">
     <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <div class="flex-1 px-3 bg-white divide-y space-y-1">
