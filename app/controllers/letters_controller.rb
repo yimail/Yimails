@@ -3,7 +3,8 @@ class LettersController < ApplicationController
   before_action :find_letter, only:[:edit, :update, :destroy]
 
   def index
-    @letters = Letter.includes([:rich_text_content])
+    #order讓信照順序排列
+    @letters = Letter.includes([:rich_text_content]).order(:id)
   end
 
   def new
