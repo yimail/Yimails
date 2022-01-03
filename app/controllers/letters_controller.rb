@@ -5,6 +5,7 @@ class LettersController < ApplicationController
 
   def index 
     @letters = Letter.where("recipient = ?" , "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
+    @labels = Label.all.order(:hierarchy)
   end
   
   def starred
@@ -17,7 +18,6 @@ class LettersController < ApplicationController
   
   def trash
     @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
-  end
 
   def new
     @letter = Letter.new
