@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_061347) do
     t.string "subject"
     t.text "content"
     t.string "carbon_copy"
-    t.boolean "star"
+    t.boolean "star", default: false
     t.string "blind_carbon_copy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
