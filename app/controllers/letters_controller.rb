@@ -1,9 +1,22 @@
 class LettersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_letter, only:[:edit, :update, :destroy]
+  before_action :find_letter, only:[:destroy]
+  before_action :current_user_email, only:[:index, :starred, :trash]
 
-  def index
-    @letters = Letter.includes([:rich_text_content])
+  def index 
+    @letters = Letter.where("recipient = ?" , "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
+  end
+  
+  def starred
+    @letters = Letter.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").where("star = ?", "true").includes(:user, :rich_text_content).order(id: :desc)
+  end
+  
+  def sendmail
+    @letters = current_user.letters.includes(:rich_text_content).order(id: :desc)
+  end
+  
+  def trash
+    @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
   end
 
   def new
@@ -26,18 +39,6 @@ class LettersController < ApplicationController
     @letter = Letter.find(params[:id])
   end
 
-  def edit
-  end
-
-  def update
-    if @letter.update(letter_params)
-      redirect_to letters_path
-    else
-      #
-    end
-
-  end
-
   def destroy
     @letter.destroy
     redirect_back(fallback_location: letter_path)
@@ -45,9 +46,14 @@ class LettersController < ApplicationController
 
   private
   def find_letter
-    @letter = current_user.letters.find(params[:id])
+    @letter = Letter.find(params[:id])
   end
+
   def letter_params
-    params.require(:letter).permit(:sender, :recipient, :subject, :content, :carbon_copy, :blind_carbon_copy, :attachments, :deleted_at)
+    params.require(:letter).permit(:sender, :recipient, :subject, :content, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
+  end
+  
+  def current_user_email 
+  current_user_email = current_user.email
   end
 end
