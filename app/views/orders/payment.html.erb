@@ -2,6 +2,14 @@
 
 <%=form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", method: "post" do |form| %>
 
+  <div class="hidden">
+    <%= @form_info %>
+    <%= form.text_field :MerchantID, value: @form_info[:MerchantID] %>
+    <%= form.text_field :TradeInfo, value: @form_info[:TradeInfo] %>
+    <%= form.text_field :TradeSha, value: @form_info[:TradeSha] %>
+    <%= form.text_field :Version, value: @form_info[:Version] %>
+  </div>
+
 <%= form_with(model: @orders) do |form| %>
   <div>
     <%= form.label :姓名 %>
@@ -14,5 +22,5 @@
   </div>
   
     <%= form.submit :確認付款 %>
-<% end %>
-<% end %>
+		<% end %>
+    <% end %>
