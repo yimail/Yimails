@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :posts
   resources :labels
   resources :letters
+  get "/payment", to: "orders#payment" 
+  post "/payment_response", to: "orders#payment_response"
 end

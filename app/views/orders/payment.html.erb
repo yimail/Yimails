@@ -1,0 +1,18 @@
+<h1 class="text-2xl">只要$60，便可升級使用標籤!買起來~~</h1>
+
+<%=form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", method: "post" do |form| %>
+
+<%= form_with(model: @orders) do |form| %>
+  <div>
+    <%= form.label :姓名 %>
+    <%= form.text_field :姓名 %>
+  </div>
+
+  <div>
+    <%= form.label :地址 %>
+    <%= form.text_field :地址 %>
+  </div>
+  
+    <%= form.submit :確認付款 %>
+<% end %>
+<% end %>
