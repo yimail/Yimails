@@ -6,6 +6,6 @@ class OrdersController < ApplicationController
   end
 
   def payment_response
-    response = Newebpay::MpgResponse.new(params[:TradeInfo])
+    @response = Newebpay::MpgResponse.new(params[:TradeInfo])
   end
 end
