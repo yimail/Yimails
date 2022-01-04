@@ -15,9 +15,8 @@ class Api::LettersController < ApplicationController
   private 
 
   def check_login
-    if not user_signed_in?
+    if !user_signed_in?
       render json: { status: 'fail', message: 'you need to login first!' }, status: 401
-      return
     end
   end
 end
