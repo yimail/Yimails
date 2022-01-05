@@ -5,8 +5,7 @@ class LettersController < ApplicationController
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index 
-    @letters = Letter.where("recipient = ?" , "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
-    @posts = Letter.includes([:rich_text_body])
+    @letters = Letter.includes(:user, :rich_text_body)
   end
   
   def starred
