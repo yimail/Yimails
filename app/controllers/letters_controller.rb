@@ -2,10 +2,10 @@ class LettersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_letter, only:[:show, :destroy]
   before_action :current_user_email, only:[:index, :starred, :trash]
+  before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index 
     @letters = Letter.where("recipient = ?" , "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
-    @labels = Label.all.order(:hierarchy)
   end
   
   def starred
@@ -18,6 +18,7 @@ class LettersController < ApplicationController
   
   def trash
     @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
+  end
 
   def new
     @letter = Letter.new
@@ -54,5 +55,9 @@ class LettersController < ApplicationController
   
   def current_user_email 
     current_user_email = current_user.email
+  end
+
+  def show_label_list
+    @labels = Label.all.order(:hierarchy)
   end
 end
