@@ -12,13 +12,13 @@
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
+    "tailwindcss": "^2.2.15",
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "devDependencies": {
     "autoprefixer": "10.0.2",
     "postcss": "^8.2.14",
-    "tailwindcss": "^2.2.15",
     "webpack-dev-server": "^3"
   }
 }
