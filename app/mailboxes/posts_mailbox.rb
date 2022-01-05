@@ -12,7 +12,7 @@ class PostsMailbox < ApplicationMailbox
       attachments: attachments.map{ |a| a[:blob] }
     )
   end
-  
+
   def attachments
     @_attachments = mail.attachments.map do |attachment|
       blob = ActiveStorage::Blob.create_after_upload!(
