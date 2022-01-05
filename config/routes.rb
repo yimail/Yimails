@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   get "/trash", to: "letters#trash"
 
   root "users#index"
-  resources :posts
   resources :labels
   resources :letters
   get "/payment", to: "orders#payment" 
