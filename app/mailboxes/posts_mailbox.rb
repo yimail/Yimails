@@ -1,12 +1,18 @@
 class PostsMailbox < ApplicationMailbox
+  before_processing :user
+
   def process
-    Post.create(
-      title: mail.subject,
+    return if user.nil?
+
+    user.letters.create(
+      subject: mail.subject,
+      recipient: mail.to,
+      sender: mail.from,
       body: body,
       attachments: attachments.map{ |a| a[:blob] }
     )
   end
-
+  
   def attachments
     @_attachments = mail.attachments.map do |attachment|
       blob = ActiveStorage::Blob.create_after_upload!(
@@ -39,5 +45,10 @@ class PostsMailbox < ApplicationMailbox
     else
       mail.decoded
     end
+  end
+
+  private
+  def user
+    user ||= User.find_by(email: mail.to)
   end
 end

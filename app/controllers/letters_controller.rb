@@ -6,6 +6,7 @@ class LettersController < ApplicationController
 
   def index 
     @letters = Letter.where("recipient = ?" , "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
+    @posts = Letter.includes([:rich_text_body])
   end
   
   def starred
@@ -18,7 +19,6 @@ class LettersController < ApplicationController
 
   def trash
     @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
-  end
 
   def new
     @letter = Letter.new
@@ -50,7 +50,7 @@ class LettersController < ApplicationController
   end
 
   def letter_params
-    params.require(:letter).permit(:sender, :recipient, :subject, :content, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
+    params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
   end
 
   def current_user_email 
