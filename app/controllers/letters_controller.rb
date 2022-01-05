@@ -11,11 +11,11 @@ class LettersController < ApplicationController
   def starred
     @letters = Letter.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").where("star = ?", "true").includes(:user, :rich_text_content).order(id: :desc)
   end
-  
+
   def sendmail
     @letters = current_user.letters.includes(:rich_text_content).order(id: :desc)
   end
-  
+
   def trash
     @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
   end
@@ -52,12 +52,12 @@ class LettersController < ApplicationController
   def letter_params
     params.require(:letter).permit(:sender, :recipient, :subject, :content, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
   end
-  
+
   def current_user_email 
     current_user_email = current_user.email
   end
 
   def show_label_list
-    @labels = Label.all.order(:hierarchy)
+    @labels = Label.order(:hierarchy)
   end
 end

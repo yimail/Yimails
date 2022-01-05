@@ -6,12 +6,12 @@ class LabelsController < ApplicationController
   def index
     @labels = Label.all
   end
-  
+
   def new
     @label = Label.new
-    @labels_with_order = Label.all.order(:hierarchy)
+    @labels_with_order = Label.order(:hierarchy)
   end
-  
+
   def create
     @label = current_user.labels.build(label_params)
     if @label.group.present?
@@ -26,7 +26,7 @@ class LabelsController < ApplicationController
 
     if @label.save
       redirect_to labels_path
-    else    
+    else
       render :new
     end
   end
