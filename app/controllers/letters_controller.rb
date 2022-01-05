@@ -1,11 +1,11 @@
 class LettersController < ApplicationController
   before_action :authenticate_user!
   before_action :find_letter, only:[:show, :destroy]
-  before_action :current_user_email, only:[:index, :starred, :trash]
+  before_action :current_user_email, only:[:starred, :trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index 
-    @letters = Letter.includes(:user, :rich_text_body)
+    @letters = current_user.letters.order(id: :dsec)
   end
   
   def starred
@@ -53,9 +53,9 @@ class LettersController < ApplicationController
     params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
   end
 
-  def current_user_email 
-    current_user_email = current_user.email
-  end
+  # def current_user_email 
+  #   current_user_email = current_user.email
+  # end
 
   def show_label_list
     @labels = Label.order(:hierarchy)
