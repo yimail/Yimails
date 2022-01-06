@@ -100,8 +100,6 @@ ActiveRecord::Schema.define(version: 2022_01_06_033926) do
     t.index ["user_id"], name: "index_letters_on_user_id"
   end
 
-<<<<<<< HEAD
-=======
   create_table "orders", force: :cascade do |t|
     t.string "username"
     t.string "address"
@@ -109,13 +107,6 @@ ActiveRecord::Schema.define(version: 2022_01_06_033926) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
->>>>>>> modify:新增i18n漢堡選單，刪除其他設定，重建Orders表單
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
