@@ -22,11 +22,6 @@
           <% end %>
         </div>
         <div class=" flex items-center ml-auto" >
-        <ul><%= link_to 'English', locale: 'en' %></ul>
-        </div>
-        <div class=" flex items-center ml-auto" >        
-        <ul><%= link_to '中文', locale: 'zh-TW' %></ul>
-        </div>
         <%# 漢堡選單 %>
         <div class="flex items-center ml-auto">
           <div class="dropdown inline-block relative items-center mr-10">
@@ -35,9 +30,15 @@
               </a>
               <%= current_user.username %>
             </div>
-            <ul class="dropdown-content w-32  absolute hidden text-gray-700 pt-1">
+            <ul class="dropdown-content w-50  absolute hidden text-gray-700 pt-1">
               <li><%= link_to "#{t("reset_pw")}", edit_user_registration_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
               <li><%= link_to "#{t("log_out")}", destroy_user_session_path, method: 'delete', class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+              <li class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                <%= link_to_if I18n.default_locale, "English", locale: 'en' %>
+              </li>
+              <li class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                <%= link_to_if I18n.locale==:en, '中文', locale: 'zh-TW' %>
+              </li> 
             </ul>
           </div>
         </div>
