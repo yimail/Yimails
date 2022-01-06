@@ -93,7 +93,8 @@ Rails.application.configure do
     user_name:            ENV["smtp_user_name"],
     password:             ENV["smtp_password"],
     authentication:       "plain",
-    enable_starttls_auto: true  }
+    enable_starttls_auto: true  
+  }
 
   config.action_mailbox.ingress = :mailgun
   config.hosts << ENV["HOST"]
