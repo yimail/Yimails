@@ -31,8 +31,12 @@
               <%= current_user.username %>
             </div>
             <ul class="dropdown-content w-50  absolute hidden text-gray-700 pt-1">
-              <li><%= link_to "#{t("reset_pw")}", edit_user_registration_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
-              <li><%= link_to "#{t("log_out")}", destroy_user_session_path, method: 'delete', class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+              <li>
+                <%= link_to "#{t("reset_pw")}", edit_user_registration_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %>
+              </li>
+              <li>
+                <%= link_to "#{t("log_out")}", destroy_user_session_path, method: 'delete', class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %>
+              </li>
               <li class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                 <%= link_to_if I18n.default_locale, "English", locale: 'en' %>
               </li>
