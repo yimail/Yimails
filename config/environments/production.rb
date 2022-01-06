@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Prepare the ingress controller used to receive mail
-  # config.action_mailbox.ingress = :relay
+  config.action_mailbox.ingress = :mailgun
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -121,6 +121,7 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "https://yimails.com/" }
   config.action_mailer.smtp_settings = {
     address:              ENV["smtp_address"],
     port:                 587,
@@ -128,5 +129,6 @@ Rails.application.configure do
     user_name:            ENV["smtp_user_name"],
     password:             ENV["smtp_password"],
     authentication:       "plain",
-    enable_starttls_auto: true  }
+    enable_starttls_auto: true  
+  }
 end

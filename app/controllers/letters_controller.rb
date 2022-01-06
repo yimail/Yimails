@@ -1,6 +1,6 @@
 class LettersController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_user_email, only:[:index, :starred, :trash]
+  before_action :current_user_email, only:[:starred, :trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index 
