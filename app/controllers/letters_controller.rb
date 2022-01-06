@@ -1,7 +1,6 @@
 class LettersController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_letter, only:[:show, :destroy]
-  before_action :current_user_email, only:[:starred, :trash]
+  before_action :current_user_email, only:[:index, :starred, :trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index 
@@ -37,18 +36,16 @@ class LettersController < ApplicationController
   end
 
   def show
+    @letter = Letter.with_deleted.includes(:rich_text_content).find(params[:id])
   end
 
   def destroy
+    @letter = Letter.find(params[:id])
     @letter.destroy
     redirect_back(fallback_location: letter_path)
   end
 
   private
-  def find_letter
-    @letter = Letter.find(params[:id])
-  end
-
   def letter_params
     params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
   end
