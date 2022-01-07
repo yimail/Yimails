@@ -23,7 +23,7 @@
                 <% @labels.each do |label| %> 
                   <li class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
                 <% end %>
-                <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+                  <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
               </ul>
             </div>
             <%# 更多選項 %>
@@ -49,11 +49,11 @@
               <% letters.each do |letter| %>
                 <div class="w-full letter_container flex hover:bg-gray-100 border">
                 <%# checkbox %>
-                <div class="flex w-10 mr-2 items-center justify-center">
-                  <input id="checkbox" aria-describedby="checkbox-1" type="checkbox" 
-                          class=" bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded" onClick="event.stopPropagation();">
-                  <label for="checkbox" class="sr-only">checkbox</label>
-                </div>
+                  <div class="flex w-10 mr-2 items-center justify-center">
+                    <input id="checkbox" aria-describedby="checkbox-1" type="checkbox" 
+                            class=" bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded" onClick="event.stopPropagation();">
+                    <label for="checkbox" class="sr-only">checkbox</label>
+                  </div>
                 <%# 星星 %>
                 <div class="mr-2 flex items-center justify-center"
                       data-controller="starmail"
