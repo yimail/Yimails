@@ -6,11 +6,11 @@ class LettersController < ApplicationController
   def index
     @letters = current_user.letters.order(id: :desc)
   end
-  
+
   def starred
     @letters = Letter.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").where("star = ?", "true").includes(:user, :rich_text_content).order(id: :desc)
   end
-  
+
   def sendmail
     @letters = current_user.letters.order(id: :desc)
   end
