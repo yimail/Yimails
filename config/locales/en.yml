@@ -10,3 +10,5 @@ en:
   trash: "Trash"
   5xruby: "5XRUBY"
   payment: "Payment"
+  reset_pw: "Reset password"
+  log_out: "Log out"
