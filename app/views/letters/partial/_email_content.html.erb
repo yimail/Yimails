@@ -23,18 +23,12 @@
                 <% @labels.each do |label| %> 
                   <li class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
                 <% end %>
-                <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+                  <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
               </ul>
             </div>
-
             <%# 更多選項 %>
             <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
-            </a>
-          </div>
-          <div class="pl-3">
-            <a href="#" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-3">
-              <svg class="-ml-1 mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
             </a>
           </div>
         </div>
@@ -57,14 +51,14 @@
                   <%# checkbox %>
                   <div class="flex w-10 mr-2 items-center justify-center">
                     <input id="checkbox" aria-describedby="checkbox-1" type="checkbox" 
-                           class=" bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded" onClick="event.stopPropagation();">
+                            class=" bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded" onClick="event.stopPropagation();">
                     <label for="checkbox" class="sr-only">checkbox</label>
                   </div>
                   <%# 星星 %>
                   <div class="mr-2 flex items-center justify-center"
-                       data-controller="starmail"
-                       data-starmail-starred-value="<%= user_signed_in? && current_user %>"
-                       data-starmail-letter-id-value="<%= letter.id %>">
+                        data-controller="starmail"
+                        data-starmail-starred-value="<%= user_signed_in? && current_user %>"
+                        data-starmail-letter-id-value="<%= letter.id %>">
                     <div data-action="click->starmail#star" data-starmail-target="btn" >
                     <% if letter.star %>
                       <svg class="text-yellow-300 w-6 h-6 "  fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -88,11 +82,11 @@
                         </div>
                         <div class="w-4/6 flex p-4 text-base text-gray-900 truncate overflow-hidden">
                           <span class="font-bold mr-2">
-                            <%= letter.subject %> -
+                            <%= letter.subject %>
                           </span>
-                          <span  class="font-light">
-                            <%= letter.body %>
-                          </span>
+                        </div>
+                        <div class="h-6 font-light max-w-sm xl:max-w-screen-md 2xl:max-w-screen-lg truncate overflow-hidden overflow-ellipsis whitespace-nowrap">
+                            <%# letter.content%>
                         </div>
                         <div class="ml-auto p-4 pr-10 text-base font-normal text-gray-900 max-w-sm xl:max-w-screen-md 2xl:max-w-screen-lg truncate overflow-hidden">
                           <%= letter.created_at.strftime("%Y/%m/%d") %>

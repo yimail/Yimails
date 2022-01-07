@@ -1,4 +1,4 @@
-<%= render 'nav' %>
+<%= render "letters/partial/navbar" %>
 <%# readmail_layout %>
 <div id="main-content" class="h-screen w-5/6 ml-auto bg-gray-50 relative overflow-y-auto">
   <div class="pt-6 px-4">
@@ -109,7 +109,7 @@
       </div>
       <div class="space-y-2">
         <p class="text-base font-normal text-gray-500">
-          <%= @letter.content %>
+          <%= @letter.rich_text_body %>
         </p>
       </div>
     </div>

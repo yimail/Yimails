@@ -1,24 +1,32 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { 
+    registrations: "users/registrations"
+  }
+
+  root "users#index"
+
+  resources :labels
+
+  resources :letters do
+    collection do
+      get :starred
+      get :sendmail
+      get :trash
+    end
+  end
+
   namespace :api do
     resources :letters, only: [] do
       member do
-        # /api/letters/3/star
         post :star
       end
     end
   end
 
-  devise_for :users, controllers: { 
-    registrations: "users/registrations"
-  }
-
-  get "/starred", to: "letters#starred"
-  get "/sendmail", to: "letters#sendmail"
-  get "/trash", to: "letters#trash"
-
-  root "users#index"
-  resources :labels
-  resources :letters
-  get "/payment", to: "orders#payment" 
-  post "/payment_response", to: "orders#payment_response"
+  resources :orders, only: [] do
+    collection do
+      get :payment
+      post :payment_response
+    end
+  end
 end
