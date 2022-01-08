@@ -2,6 +2,7 @@ class LabelsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_label, only:[:edit, :update, :destroy]
+  before_action :label_with_order, only:[:index, :new]
 
   def index
     @labels = Label.all
@@ -9,7 +10,6 @@ class LabelsController < ApplicationController
 
   def new
     @label = Label.new
-    @labels_with_order = Label.order(:hierarchy)
   end
 
   def create
@@ -22,7 +22,7 @@ class LabelsController < ApplicationController
     end
 
     count_space = @label[:hierarchy].count"/"
-    @label[:display] = "#{' . '*count_space} #{@label.title}"
+    @label[:display] = "#{'　'*count_space} #{@label.title}"
 
     if @label.save
       redirect_to labels_path
@@ -54,5 +54,9 @@ class LabelsController < ApplicationController
 
   def label_params
     params.require(:label).permit(:title, :group)
+  end
+
+  def label_with_order
+    @labels_with_order = Label.order(:hierarchy)
   end
 end

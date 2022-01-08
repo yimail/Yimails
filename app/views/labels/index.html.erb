@@ -18,9 +18,9 @@
             </tr>
           </thead>
           <tbody>
-            <% @labels.each do |label| %>
+            <% @labels_with_order.each do |label| %>
               <tr class="border-b">
-                <td class="pl-10 py-5 text-sm"><%= label.title %></td>
+                <td class="pl-10 py-5 text-sm"><%= label.display %></td>
                 <td class="text-center">
                   <%= link_to "移除", label_path(label.id), method: 'delete', data: {confirm: '確認刪除?'}, class:"text-sm transition duration-150 hover:bg-gray-200 bg-gray-300 font-semibold py-2 px-4 rounded-l"%>
                   <%= link_to "編輯", edit_label_path(label.id), class:"text-sm transition duration-150 hover:bg-gray-200 bg-gray-300 font-semibold py-2 px-4 rounded-r" %>

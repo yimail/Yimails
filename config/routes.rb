@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       end
       collection do
         post :trash
+        post :add_label
       end
     end
   end
