@@ -42,7 +42,11 @@ gem 'figaro', '~> 1.2'
 
 gem 'devise-authy', '~> 2.3'
 
+# 軟刪除
 gem 'paranoia', '~> 2.5'
+
+# ActiveJob存放工作排程的gem 
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
