@@ -1,7 +1,7 @@
 class LabelsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_label, only:[:edit, :update, :destroy]
+  before_action :find_label, only:[:show, :edit, :update, :destroy]
   before_action :label_with_order, only:[:index, :new]
 
   def index
@@ -29,6 +29,13 @@ class LabelsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @labels = Label.order(:hierarchy)
+    @label_folder = Label.order(:hierarchy)
+    label = Label.find(params[:id])
+    @letters = label.letters.order(id: :desc)
   end
 
   def edit
