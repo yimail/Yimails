@@ -7,7 +7,6 @@ document.addEventListener('turbolinks:load',()=>{
   const labelItems = document.querySelectorAll('#labelItem')
   const letters = document.querySelectorAll('#each_letter')
   const checkedLetters = []
-  const addLabelTag = document.querySelectorAll('.add_label_tag')
 
   letters.forEach((letter)=>{
     letter.addEventListener('change', (e)=>{
