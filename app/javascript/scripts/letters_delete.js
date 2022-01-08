@@ -1,8 +1,11 @@
-import httpClient from "lib/http/client"
+import httpClient from 'lib/http/client'
 
 document.addEventListener('turbolinks:load', () => {
   const letters = document.querySelectorAll('#letterItem')
+  const trashBtn = document.querySelector('#trashBtn')
   const checkedLetters = []
+
+  if (!trashBtn) return
 
   letters.forEach((letter) => {
     letter.addEventListener('change', (e) => {
