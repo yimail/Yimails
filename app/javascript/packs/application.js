@@ -10,6 +10,7 @@ import "channels";
 
 import "stylesheets/application";
 import "controllers"
+import './addLabelToLetters'
 
 Rails.start();
 Turbolinks.start();

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       member do
         post :star
       end
+      collection do
+        post :add_label
+      end
     end
   end
 
