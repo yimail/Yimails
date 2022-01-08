@@ -59,7 +59,7 @@
           <ul class="space-y-2 pb-2">
             <li class="px-5 m-2">
               <div class="flex flex-row items-center h-8 justify-center my-6">
-                <%= link_to "#{t("compose")}", new_letter_path, class: "text-center w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border-b-4 border-blue-600 hover:border-blue rounded-lg " %> 
+                <%= link_to "#{t("compose")}", new_letter_path, remote: true ,class: "text-center w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border-b-4 border-blue-600 hover:border-blue rounded-lg "%> 
               </div>
             </li> 
             <%# 收件夾 %>
@@ -139,4 +139,28 @@
       </div>
     </div>
   </aside>
+</div>
+
+<%# new letter modal  %>
+<div id="newletterModal" class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center backdrop-sepia bg-opacity-60 bg-gray-500">
+  <div class="relative w-auto my-6 mx-auto max-w-3xl">
+    <div class=" border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t bg-blue-500">
+        <h3 class="text-2xl font-semibold text-white ">
+          新郵件
+        </h3>
+        <button id ="closeCompose" class="p-1 ml-auto text-white bg-transparent hover:bg-gray-200 hover:text-gray-900" >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          <div id="newletter">
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
