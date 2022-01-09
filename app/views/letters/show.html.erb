@@ -93,6 +93,7 @@
         <% @letter.labels.each do |label|%>
           <div class="bg-yellow-500 border rounded-md mx-1 px-1">
             <%= label.title %>
+            <button class="delete_label_btn ml-0.5" data-label_id='<%= label.id%>' data-letter_id='<%= @letter.id%>'> X </button>
           </div>
         <% end %>
       </div>

@@ -30,6 +30,11 @@ class Api::LettersController < ApplicationController
     end
   end
 
+  def delete_label
+    letter_with_label = LetterWithLabel.where(label_id: params[:label_id], letter_id: params[:letter_id])
+    LetterWithLabel.destroy(letter_with_label.ids)
+  end
+
   private 
 
   def check_login

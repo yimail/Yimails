@@ -30,9 +30,6 @@ document.addEventListener('turbolinks:load',()=>{
       }).then((data)=>{
         window.location.href = window.location.pathname;
       })
-      .catch(function(error){
-        console.log("ERROR: ", err);
-      })
     })
   })
 })
