@@ -58,7 +58,7 @@
               <% letters.each do |letter| %>
                 <div class="w-full letter_container flex hover:bg-gray-100 border">
                   <%# checkbox %>
-                  <div data-id='<%= letter.id %>' id="each_letter"
+                  <div data-id='<%= letter.id %>' id="letterItem"
                        class="flex w-10 mr-2 items-center justify-center">
                     <input id="checkbox" aria-describedby="checkbox-1" type="checkbox" 
                             class=" bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded" onClick="event.stopPropagation();">

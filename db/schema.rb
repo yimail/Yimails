@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_033926) do
+ActiveRecord::Schema.define(version: 2022_01_09_110435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_033926) do
     t.bigint "user_id"
     t.string "hierarchy"
     t.string "display"
+    t.integer "indentation"
     t.index ["user_id"], name: "index_labels_on_user_id"
   end
 

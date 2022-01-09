@@ -11,8 +11,6 @@ import "channels";
 import "stylesheets/application";
 import "controllers"
 import "scripts"
-import './addLabelToLetters'
-import './deleteLabelFromLetter'
 
 Rails.start();
 Turbolinks.start();

@@ -5,7 +5,7 @@ document.addEventListener('turbolinks:load',()=>{
   if (!labelBtn) return
 
   const labelItems = document.querySelectorAll('#labelItem')
-  const letters = document.querySelectorAll('#each_letter')
+  const letters = document.querySelectorAll('#letterItem')
   const checkedLetters = []
 
   letters.forEach((letter)=>{
