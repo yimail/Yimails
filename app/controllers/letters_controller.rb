@@ -1,5 +1,5 @@
 class LettersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :label_folder
   before_action :current_user_email, only:[:trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
@@ -12,11 +12,11 @@ class LettersController < ApplicationController
   end
 
   def sendmail
-    @letters = current_user.letters.where(status: "sent").includes(:rich_text_content).order(id: :desc)
+    @letters = current_user.letters.where(status: "sent").order(id: :desc)
   end
 
   def trash
-    @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
+    @letters = Letter.only_deleted.wherex
   end
 
   def new
@@ -36,25 +36,25 @@ class LettersController < ApplicationController
   end
 
   def show
-    @letter = Letter.with_deleted.includes(:rich_text_body).find(params[:id])
+    @letter = Letter.with_deleted.find(params[:id])
   end
 
   def reply
     @letter = current_user.letters.find(params[:id])
-    @letter[:recipient] = @letter[:sender]
+    @letter[:recipient] = @letter[:sender][2..-3]
     @letter[:subject] = "Re:" + @letter[:subject]
   end
 
   def forwarded
     @letter = current_user.letters.find(params[:id])
     @letter[:recipient] = ""
-    @letter[:subject] = @letter[:subject]
   end
 
   def update
-    @letter = current_user.letters.find(params[:id])
-
-    if @letter.update(letter_params)
+    @letter = current_user.letters.build(letter_params)
+    @letter[:sender] = current_user.email
+    
+    if @letter.save
       UserSendEmailJob.perform_later(@letter)
       redirect_to letters_path
     end
@@ -73,6 +73,7 @@ class LettersController < ApplicationController
 
   def current_user_email 
     current_user_email = current_user.email
+    UserSendEmailJob.perform_later(@letter)
   end
 
   def show_label_list

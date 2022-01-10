@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_09_110435) do
-=======
-ActiveRecord::Schema.define(version: 2022_01_08_184928) do
->>>>>>> 6f7969f (feat:正常顯示mailbox＆寄件備份)
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,10 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_184928) do
     t.bigint "user_id"
     t.string "hierarchy"
     t.string "display"
-<<<<<<< HEAD
     t.integer "indentation"
-=======
->>>>>>> 6f7969f (feat:正常顯示mailbox＆寄件備份)
     t.index ["user_id"], name: "index_labels_on_user_id"
   end
 
@@ -96,10 +89,6 @@ ActiveRecord::Schema.define(version: 2022_01_08_184928) do
     t.string "sender"
     t.string "recipient"
     t.string "subject"
-<<<<<<< HEAD
-    t.text "content"
-=======
->>>>>>> 6f7969f (feat:正常顯示mailbox＆寄件備份)
     t.string "carbon_copy"
     t.boolean "star", default: false
     t.string "blind_carbon_copy"
@@ -107,10 +96,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_184928) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.datetime "deleted_at"
-<<<<<<< HEAD
-=======
     t.integer "status"
->>>>>>> 6f7969f (feat:正常顯示mailbox＆寄件備份)
     t.index ["deleted_at"], name: "index_letters_on_deleted_at"
     t.index ["user_id"], name: "index_letters_on_user_id"
   end
