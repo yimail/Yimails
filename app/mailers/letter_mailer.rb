@@ -7,7 +7,7 @@ class LetterMailer < ApplicationMailer
       cc: [@letter.carbon_copy],
       bcc: [@letter.blind_carbon_copy],
       subject: @letter.subject,
-      status: @letter.sent!
+      status: 1
     )
   end
 end
