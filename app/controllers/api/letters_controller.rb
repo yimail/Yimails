@@ -19,6 +19,21 @@ class Api::LettersController < ApplicationController
       letter.destroy
     end
   end
+  
+  def add_label
+    letter_ids = params[:letter_ids]
+    label = Label.find(params[:label_id])
+    letter_ids.each do |id|
+      letter = Letter.find(id)
+      letter.labels << label
+      letter.save
+    end
+  end
+
+  def delete_label
+    letter_with_label = LetterWithLabel.where(label_id: params[:label_id], letter_id: params[:letter_id])
+    LetterWithLabel.destroy(letter_with_label.ids)
+  end
 
   private 
 

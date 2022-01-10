@@ -1,5 +1,5 @@
 class LettersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :label_folder
   before_action :current_user_email, only:[:starred, :trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
@@ -57,5 +57,9 @@ class LettersController < ApplicationController
 
   def show_label_list
     @labels = Label.order(:hierarchy)
+  end
+
+  def label_folder
+    @label_folder = Label.order(:hierarchy)
   end
 end
