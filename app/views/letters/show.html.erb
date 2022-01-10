@@ -54,10 +54,11 @@
       </div>
       <div class="hidden sm:flex divide-x divide-gray-100 space-x-2 pl-0 sm:px-2">
         <div class="pr-2 flex">
-          <%# 回覆 %>
+          <%# 移回收件夾 %>
           <a href="＃" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+              <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11h4m-2-2v4" />
             </svg>
           </a>
           <%# 垃圾桶 %>
@@ -111,7 +112,7 @@
             </div>
           </div>
           <div class="text-xs text-normal text-gray-500">
-            <span>寄給 </span><%= @letter.recipient %>
+            <span>寄給</span><%= @letter.recipient %>
           </div>
         </div>
       </div>
