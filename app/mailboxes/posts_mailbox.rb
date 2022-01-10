@@ -3,13 +3,13 @@ class PostsMailbox < ApplicationMailbox
 
   def process
     return if user.nil?
-
     user.letters.create(
       subject: mail.subject,
-      recipient: mail.to,
-      sender: mail.from,
+      recipient: mail.to[0],
+      sender: mail.from[0],
       body: body,
-      attachments: attachments.map{ |a| a[:blob] }
+      attachments: attachments.map{ |a| a[:blob] },
+      status: 0
     )
   end
 

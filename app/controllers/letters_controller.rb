@@ -1,18 +1,18 @@
 class LettersController < ApplicationController
-  before_action :authenticate_user!, :label_folder
-  before_action :current_user_email, only:[:starred, :trash]
+  before_action :authenticate_user!
+  before_action :current_user_email, only:[:trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index
-    @letters = current_user.letters.order(id: :desc)
+    @letters = current_user.letters.where(status: "receiver").order(id: :desc)
   end
 
   def starred
-    @letters = Letter.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").where("star = ?", "true").includes(:user, :rich_text_content).order(id: :desc)
+    @letters = current_user.letters.where(star: true).order(id: :desc)
   end
 
   def sendmail
-    @letters = current_user.letters.order(id: :desc)
+    @letters = current_user.letters.where(status: "sent").includes(:rich_text_content).order(id: :desc)
   end
 
   def trash
@@ -21,7 +21,6 @@ class LettersController < ApplicationController
 
   def new
     @letter = Letter.new
-    # @reply = Letter.find(params[:id])
   end
 
   def create
@@ -40,6 +39,27 @@ class LettersController < ApplicationController
     @letter = Letter.with_deleted.includes(:rich_text_body).find(params[:id])
   end
 
+  def reply
+    @letter = current_user.letters.find(params[:id])
+    @letter[:recipient] = @letter[:sender]
+    @letter[:subject] = "Re:" + @letter[:subject]
+  end
+
+  def forwarded
+    @letter = current_user.letters.find(params[:id])
+    @letter[:recipient] = ""
+    @letter[:subject] = @letter[:subject]
+  end
+
+  def update
+    @letter = current_user.letters.find(params[:id])
+
+    if @letter.update(letter_params)
+      UserSendEmailJob.perform_later(@letter)
+      redirect_to letters_path
+    end
+  end
+
   def destroy
     @letter = Letter.find(params[:id])
     @letter.destroy
@@ -48,7 +68,7 @@ class LettersController < ApplicationController
 
   private
   def letter_params
-    params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)
+    params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at, :status)
   end
 
   def current_user_email 
