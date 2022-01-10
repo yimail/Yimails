@@ -4,7 +4,7 @@ class LettersController < ApplicationController
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
 
   def index
-    @letters = current_user.letters.where(status: "receiver").order(id: :desc)
+    @letters = current_user.letters.where(status: "received").order(id: :desc)
   end
 
   def starred
