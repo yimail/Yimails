@@ -10,6 +10,7 @@ import "channels";
 
 import "stylesheets/application";
 import "controllers"
+import "scripts"
 
 Rails.start();
 Turbolinks.start();
