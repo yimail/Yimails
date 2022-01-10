@@ -46,6 +46,12 @@ class LettersController < ApplicationController
     redirect_back(fallback_location: letter_path)
   end
 
+  def retrieve
+    @letter = Letter.with_deleted.find(params[:id])
+    @letter.restore
+    redirect_back(fallback_location: letter_path)
+  end
+
   private
   def letter_params
     params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at)

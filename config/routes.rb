@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       get :sendmail
       get :trash
     end
+    member do
+      patch :retrieve
+    end
   end
 
   namespace :api do
