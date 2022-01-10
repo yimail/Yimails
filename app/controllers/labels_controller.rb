@@ -21,8 +21,9 @@ class LabelsController < ApplicationController
       @label[:hierarchy] = @label.title
     end
 
-    @label[:indentation] = @label[:hierarchy].count"/"
-    @label[:display] = "#{'　'*@label.indentation} #{@label.title}"
+    count_space = @label[:hierarchy].count"/"
+    @label[:indentation] = count_space*4
+    @label[:display] = "#{'　'*count_space} #{@label.title}"
 
     if @label.save
       redirect_to labels_path
