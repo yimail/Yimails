@@ -1,0 +1,13 @@
+var modal = document.querySelector("#newletterModal")
+var content = document.querySelector("#newletter")
+var remove = document.querySelector("#closeCompose")
+
+modal.style.display = 'block'
+
+remove.addEventListener("click", () => {
+  if(modal.style.display = 'block') {
+    modal.style.display = 'none'
+  }
+})
+
+content.innerHTML = ` <%= j render 'new', letter: @letter %>`
