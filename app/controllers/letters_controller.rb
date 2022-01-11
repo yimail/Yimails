@@ -42,12 +42,13 @@ class LettersController < ApplicationController
   def reply
     @letter = current_user.letters.find(params[:id])
     @letter[:recipient] = @letter[:sender][2..-3]
-    @letter[:subject] = "Re:" + @letter[:subject]
+    @letter[:subject] = "RE: " + @letter[:subject]
   end
 
   def forwarded
     @letter = current_user.letters.find(params[:id])
     @letter[:recipient] = ""
+    @letter[:subject] = "FW: " + @letter[:subject]
   end
 
   def update
