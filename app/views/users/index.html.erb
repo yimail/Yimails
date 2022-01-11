@@ -1,19 +1,21 @@
 <section class="w-full px-6 pb-12 antialiased bg-white">
   <div class="mx-auto max-w-7xl">
-    <div class="container max-w-lg px-4 py-32 mx-auto text-left md:max-w-none md:text-center">
+    <div class="container max-w-lg px-4 pt-48 mx-auto text-left md:max-w-none md:text-center">
       <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
         <span class="inline md:block">Welcome</span> 
-        <span class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-800 to-blue-500 ">You’ve got Yimail!</span>
+        <span class="relative mt-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-500 ">You’ve got Yimail!</span>
       </h1>
       <div class="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">
       輕輕鬆鬆編輯信件 還可以依個人喜好自訂標籤</br>
       讓你有系統地做好信件分類!
-        <div class="mt-5 relative flex flex-col justify-center md:flex-row md:space-x-4">
+        <div class="mt-5 relative flex flex-col justify-center md:flex-row md:space-x-4 z-10">
           <%= link_to "註冊", new_user_registration_path, type:"submit", class:"flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-blue-500 md:mb-0 hover:bg-blue-900 md:w-auto rounded-2xl"%>
           <%= link_to "登入", new_user_session_path, type:"submit", class:"flex items-center px-6 py-3 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-800 rounded-2xl"%>
         </div>
       </div>
     </div>
+    <div class="absolute inset-0 z-0 flex items-end w-full h-full bg-cover opacity-50">
+        <img src="http://devdojo.com.s3.us-east-1.amazonaws.com/tails/images/mesh-bg-blue.svg" class="object-cover w-full h-full">
+    </div>
   </div>
 </section>
-
