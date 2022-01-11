@@ -1,5 +1,4 @@
 class LabelsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :find_label, only:[:show, :edit, :update, :destroy]
   before_action :label_with_order, only:[:index, :new]

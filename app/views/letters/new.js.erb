@@ -10,4 +10,4 @@ remove.addEventListener("click", () => {
   }
 })
 
-content.innerHTML = ` <%= j render 'new', letter: @letter %>`
+content.innerHTML = ` <%= j render 'letters/partial/new_letter', letter: @letter %>`

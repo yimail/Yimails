@@ -9,7 +9,8 @@ class PostsMailbox < ApplicationMailbox
       recipient: mail.to,
       sender: mail.from,
       body: body,
-      attachments: attachments.map{ |a| a[:blob] }
+      attachments: attachments.map{ |a| a[:blob] },
+      status: 0
     )
   end
 

@@ -8,4 +8,9 @@ class Letter < ApplicationRecord
   has_many :letter_with_label
   has_many :labels, through: :letter_with_label
   has_many_attached :attachments
+
+  enum status: {
+    received: 0,
+    sent: 1
+  }
 end

@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2022_01_09_110435) do
     t.string "sender"
     t.string "recipient"
     t.string "subject"
-    t.text "content"
     t.string "carbon_copy"
     t.boolean "star", default: false
     t.string "blind_carbon_copy"
@@ -97,6 +96,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_110435) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.datetime "deleted_at"
+    t.integer "status"
     t.index ["deleted_at"], name: "index_letters_on_deleted_at"
     t.index ["user_id"], name: "index_letters_on_user_id"
   end
