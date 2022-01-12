@@ -26,6 +26,7 @@ class LettersController < ApplicationController
   def create
     @letter = current_user.letters.build(letter_params)
     @letter[:sender] = current_user.email
+    @letter[:status] = 1
 
     if @letter.save
       UserSendEmailJob.perform_later(@letter)
@@ -54,6 +55,7 @@ class LettersController < ApplicationController
   def update
     @letter = current_user.letters.build(letter_params)
     @letter[:sender] = current_user.email
+    @letter[:status] = 1
     
     if @letter.save
       UserSendEmailJob.perform_later(@letter)
