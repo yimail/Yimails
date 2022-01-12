@@ -53,12 +53,15 @@
       </div>
       <div class="hidden sm:flex divide-x divide-gray-100 space-x-2 pl-0 sm:px-2">
         <div class="pr-2 flex">
-          <%# 回覆 %>
-          <a href="＃" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
-            </svg>
-          </a>
+          <%# 移回收件匣 %>
+          <%= button_to retrieve_letter_path(@letter), method: 'patch' do %>
+            <a href="javascript:history.back()" onClick="javascript:history.back()" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11h4m-2-2v4" />
+              </svg>
+            </a>
+          <% end %>
           <%# 垃圾桶 %>
           <%= button_to letter_path, method: 'delete' do %>
             <a href="javascript:history.back()" onClick="javascript:history.back()" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
@@ -84,10 +87,17 @@
     </div>
 
     <%# content %>
-    <div class="p-5">
+    <div class="flex items-start">
       <h1 class="text-2xl font-bold text-gray-900 mb-4">
         <%= letter.subject %>
       </h1>
+      <% @letter.labels.each do |label|%>
+        <div class="bg-yellow-500 border rounded-md mx-1 px-1 ">
+          <%= label.title %>
+          <button class="delete_label_btn ml-0.5" data-label_id='<%= label.id %>' data-letter_id='<%= @letter.id %>'> X </button>
+        </div>
+      <% end %>
+    </div>
       <div class="flex items-center mb-4">
         <div class="flex-shrink-0">
           <svg class="h-8 w-8 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
