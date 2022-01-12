@@ -1,7 +1,7 @@
 class LettersController < ApplicationController
   before_action :authenticate_user!, :label_folder
   before_action :current_user_email, only:[:trash]
-  before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show]
+  before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show, :search]
 
   def index
     @letters = current_user.letters.where(status: "received").order(id: :desc)
@@ -71,6 +71,10 @@ class LettersController < ApplicationController
     @letter = Letter.with_deleted.find(params[:id])
     @letter.restore
     redirect_back(fallback_location: letter_path)
+  end
+
+  def search
+    @letters = Letter.joins(:rich_text_content).where("sender LIKE ? or recipient LIKE ? or subject LIKE ? or action_text_rich_texts.body LIKE ?" , "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
   end
 
   private
