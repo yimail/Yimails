@@ -21,6 +21,6 @@ module Yimails
     # config.eager_load_paths << Rails.root.join("extras")
 
     # active_storage.replace_on_assign_to_many = false
-    config.active_job.queue_adapter = :delayed_job
+    # config.active_job.queue_adapter = :delayed_job
   end
 end
