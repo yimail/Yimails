@@ -13,10 +13,10 @@ Rails.application.routes.draw do
       get :sendmail
       get :trash
     end
-
     member do
       get :reply
       get :forwarded
+      patch :retrieve
     end
   end
 
