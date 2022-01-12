@@ -15,7 +15,7 @@
         <%= f.password_field :password, autocomplete: "current-password", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" %>
       </div>
 
-      <div class="flex items-start">
+      <div class="flex items-start py-3">
         <% if devise_mapping.rememberable? %>
           <div class="field flex items-center h-5">
             <%= f.check_box :remember_me, id:"remember", type:"checkbox", class:"bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded"%>
