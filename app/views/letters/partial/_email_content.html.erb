@@ -28,7 +28,8 @@
                   <li data-id='<%= label.id%>' id='labelItem'
                       class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
                 <% end %>
-                  <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+                  <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
+                  <li><%= link_to '標籤列表', labels_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
               </ul>
             </div>
             <%# 回報為垃圾信件 %>
