@@ -1,17 +1,18 @@
 class PostsMailbox < ApplicationMailbox
-  before_processing :user
-
+  before_processing :users
   def process
-    return if user.nil?
+    return if users.nil?
 
-    user.letters.create(
-      subject: mail.subject,
-      recipient: mail.to,
-      sender: mail.from,
-      body: body,
-      attachments: attachments.map{ |a| a[:blob] },
-      status: 0
-    )
+    users.each do |user|
+      user.letters.create(
+        subject: mail.subject,
+        recipient: recipient,
+        sender: mail.from.to_s[2..-3],
+        body: body,
+        attachments: attachments.map{ |a| a[:blob] },
+        status: 0
+      )
+    end
   end
 
   def attachments
@@ -48,8 +49,16 @@ class PostsMailbox < ApplicationMailbox
     end
   end
 
+  def recipient
+    if mail.to.length > 1
+      mail.to.to_s.gsub(/[","]/,"")[1..-2]
+    else
+      mail.to.to_s[2..-3]
+    end
+  end
+
   private
-  def user
-    user ||= User.find_by(email: mail.to)
+  def users
+    users = mail.to.map {|r| User.find_by(email: r)}
   end
 end
