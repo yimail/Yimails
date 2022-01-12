@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     @user[:email] = "#{@user.username}@yimails.com"
     if @user.save
-      system_user =  User.find(0)
+      system_user =  User.find(1)
       system_user.letters.create(sender: system_user.email, recipient: @user.email, subject: "Welcome", content: '歡迎使用Yimail! 簡單介面、輕鬆編輯，是您電子郵件的最佳選擇')
       redirect_to user_session_path
     else 
