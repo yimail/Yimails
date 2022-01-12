@@ -12,3 +12,5 @@ en:
   payment: "Payment"
   reset_pw: "Reset password"
   log_out: "Log out"
+  create_label: "Create label"
+  label_list: "Label list"

@@ -5,10 +5,27 @@ zh-TW:
         current_password: "當前密碼"
         email: "電子郵箱"
         password: "密碼"
+        firstname: "姓氏"
+        lastname: "名字"
+        username: "電子郵箱"
+        backup_email: "備用信箱"
         password_confirmation: "密碼確認"
         remember_me: "記憶登入訊息"
     models:
       user: "用戶"
+  errors:
+    format: '%{attribute}%{message}'
+    messages:
+      blank: '不能為空白'
+      invalid: '無效'
+      already_confirmed: "已經驗證，請直接登入。"
+      confirmation_period_expired: "必須在 %{period} 內驗證，請重新申請。"
+      expired: "已經過期，請重新申請。"
+      not_found: "找不到。"
+      not_locked: "並未被鎖定。"
+      not_saved:
+        one: "有一個錯誤導致 %{resource} 不能被儲存："
+        other: "有 %{count} 個錯誤導致 %{resource} 不能被儲存："
   devise:
     confirmations:
       new:
@@ -114,13 +131,4 @@ zh-TW:
       send_instructions: "您將在幾分鐘後收到一封電子郵件，內有將帳號解除鎖定的步驟說明。"
       send_paranoid_instructions: "如果您的帳號已存在，您的電子信箱將會收到如何解鎖帳號的指示。"
       unlocked: "您的帳號已被解鎖，現在已經登入。"
-  errors:
-    messages:
-      already_confirmed: "已經驗證，請直接登入。"
-      confirmation_period_expired: "必須在 %{period} 內驗證，請重新申請。"
-      expired: "已經過期，請重新申請。"
-      not_found: "找不到。"
-      not_locked: "並未被鎖定。"
-      not_saved:
-        one: "有一個錯誤導致 %{resource} 不能被儲存："
-        other: "有 %{count} 個錯誤導致 %{resource} 不能被儲存："
+  
