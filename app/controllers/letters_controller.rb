@@ -16,7 +16,7 @@ class LettersController < ApplicationController
   end
 
   def trash
-    @letters = Letter.only_deleted.where("sender = ? or recipient = ?", "#{current_user_email}", "#{current_user_email}").includes(:user, :rich_text_content).order(id: :desc)
+    @letters = current_user.letters.only_deleted.order(id: :desc)
   end
 
   def new
@@ -41,7 +41,7 @@ class LettersController < ApplicationController
 
   def reply
     @letter = current_user.letters.find(params[:id])
-    @letter[:recipient] = @letter[:sender][2..-3]
+    @letter[:recipient] = @letter[:sender]
     @letter[:subject] = "RE: " + @letter[:subject]
   end
 
@@ -68,7 +68,7 @@ class LettersController < ApplicationController
   end
 
   def retrieve
-    @letter = Letter.with_deleted.find(params[:id])
+    @letter = current_user.letters.with_deleted.find(params[:id])
     @letter.restore
     redirect_back(fallback_location: letter_path)
   end

@@ -94,24 +94,25 @@
                   <%# 信件摘要 %>
                   <div class="w-full">
                     <%= link_to letter_path(letter.id) do %>
-                      <div class="w-full flex justify-items-center">
-                        <div class="w-1/6 p-4 items-center whitespace-nowrap space-x-4 text-base font-semibold text-gray-900">
+                      <div class="flex">
+                        <div class="mx-2 w-24 p-4 items-center text-base font-semibold text-gray-900">
                           <%= letter.user.username %>
                         </div>
-                        <div class="w-4/6 flex p-4 text-base text-gray-900 truncate overflow-ellipsis">
+                        <div class="flex p-4 text-base text-gray-900 overflow-hidden truncate max-w-sm md:max-w-lg lg:max-w-xl xl:max-w-3xl">
                           <% letter.labels.each do |label|%>
                             <div class="bg-yellow-500 border rounded-md mx-1 px-1">
                               <%= label.title %>
                             </div>
                           <% end %>
-                          <div class="font-bold mr-2">
+                          <div class="w-max font-bold mr-2">
                             <%= letter.subject %> -
                           </div>
-                          <div class="h-6 font-light max-w-sm xl:max-w-screen-md 2xl:max-w-screen-lg truncate overflow-hidden overflow-ellipsis whitespace-nowrap">
-                            <%= letter.content%>
+                          <div class="h-6 font-light">
+                            <%= letter.content %>
+                            <%= letter.body %>
                           </div>
                         </div>
-                        <div class="ml-auto p-4 pr-10 text-base font-normal text-gray-900 max-w-sm xl:max-w-screen-md 2xl:max-w-screen-lg truncate overflow-hidden">
+                        <div class="ml-auto p-4 text-base font-normal text-gray-900">
                           <%= letter.created_at.strftime("%Y/%m/%d") %>
                         </div>
                       </div>

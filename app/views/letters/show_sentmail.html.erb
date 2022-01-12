@@ -87,6 +87,7 @@
     <div class="p-5">
       <h1 class="text-2xl font-bold text-gray-900 mb-4">
         <%= @letter.subject %>
+        <button class="delete_label_btn ml-0.5" data-label_id='<%= label.id %>' data-letter_id='<%= @letter.id %>'> X </button>
       </h1>
       <div class="flex items-center mb-4">
         <div class="flex-shrink-0">
