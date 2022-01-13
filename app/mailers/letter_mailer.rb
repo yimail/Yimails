@@ -6,7 +6,8 @@ class LetterMailer < ApplicationMailer
       to: [@letter.recipient],
       cc: [@letter.carbon_copy],
       bcc: [@letter.blind_carbon_copy],
-      subject: @letter.subject
+      subject: @letter.subject,
+      status: @letter.sent!
     )
   end
 end
