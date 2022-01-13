@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  invisible_captcha only: [:create]
   before_action :configure_sign_up_params, only: [:create]
   before_action :user_params, only: [:create]
 

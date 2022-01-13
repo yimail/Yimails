@@ -2,10 +2,9 @@
   <div class="bg-white shadow-md border border-gray-200 rounded-lg p-4">
     <div class="space-y-6">
       <h2 class="text-xl font-medium text-gray-900">建立您的 Yimails 帳戶</h2>
-
+      <%= flash[:error] %>
       <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
         <div class="name_container flex justify-between my-3">
           <div class="field w-2/4 mr-2.5">
             <%= f.label :姓氏, class:"text-sm font-medium text-gray-900 mb-2"%><br />
