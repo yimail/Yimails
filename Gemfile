@@ -5,7 +5,8 @@ ruby '2.7.4'
 
 # Language switching
 gem 'i18n', '~> 1.6'
-
+# Paginator
+gem 'kaminari', '~> 1.2.1'
 # Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
 # Parse HTML
