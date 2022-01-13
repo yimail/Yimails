@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :starred
       get :sendmail
       get :trash
+      get :search
     end
     member do
       get :reply
