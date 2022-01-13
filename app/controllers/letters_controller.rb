@@ -90,10 +90,10 @@ class LettersController < ApplicationController
   end
 
   def show_label_list
-    @labels = Label.order(:hierarchy)
+    @labels = current_user.labels.order(:hierarchy)
   end
 
   def label_folder
-    @label_folder = Label.order(:hierarchy)
+    @label_folder = current_user.labels.order(:hierarchy)
   end
 end

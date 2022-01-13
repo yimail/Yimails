@@ -4,17 +4,17 @@ class LabelsController < ApplicationController
   before_action :label_with_order, only:[:index, :new]
 
   def index
-    @labels = Label.all
+    @labels = current_user.labels
   end
 
   def new
-    @label = Label.new
+    @label = current_user.labels.new
   end
 
   def create
     @label = current_user.labels.build(label_params)
     if @label.group.present?
-      find_title = Label.find_by_title(@label.group)
+      find_title = current_user.labels.find_by_title(@label.group)
       @label[:hierarchy] = "#{find_title[:hierarchy]}/#{@label.title}"
     else
       @label[:hierarchy] = @label.title
@@ -32,9 +32,9 @@ class LabelsController < ApplicationController
   end
 
   def show
-    @labels = Label.order(:hierarchy)
-    @label_folder = Label.order(:hierarchy)
-    label = Label.find(params[:id])
+    @labels = current_user.labels.order(:hierarchy)
+    @label_folder = current_user.labels.order(:hierarchy)
+    label = current_user.labels.find(params[:id])
     @letters = label.letters.order(id: :desc)
   end
 
@@ -64,6 +64,6 @@ class LabelsController < ApplicationController
   end
 
   def label_with_order
-    @labels_with_order = Label.order(:hierarchy)
+    @labels_with_order = current_user.labels.order(:hierarchy)
   end
 end

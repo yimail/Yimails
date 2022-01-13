@@ -22,7 +22,7 @@ class Api::LettersController < ApplicationController
   
   def add_label
     letter_ids = params[:letter_ids]
-    label = Label.find(params[:label_id])
+    label = current_user.labels.find(params[:label_id])
     letter_ids.each do |id|
       letter = Letter.find(id)
       letter.labels << label
