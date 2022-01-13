@@ -25,7 +25,7 @@ class LabelsController < ApplicationController
     @label[:display] = "#{'　'*count_space} #{@label.title}"
 
     if @label.save
-      redirect_to labels_path
+      redirect_to letters_path
     else
       render :new
     end
