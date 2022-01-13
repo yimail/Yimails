@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :letters, only: [] do
       member do
         post :star
+        post :read
       end
       collection do
         post :trash

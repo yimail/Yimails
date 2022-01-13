@@ -43,6 +43,13 @@ class Api::LettersController < ApplicationController
     LetterWithLabel.destroy(letter_with_label.ids)
   end
 
+  def read
+    @letter = Letter.find(params[:letterId])
+    if !@letter.read
+      @letter.update(read: true)
+    end
+  end
+
   private 
 
   def check_login
