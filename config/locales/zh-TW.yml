@@ -12,3 +12,5 @@ zh-TW:
   payment: "付款"
   reset_pw: "重設密碼"
   log_out: "登出"
+  create_label: "建立標籤"
+  label_list: "標籤列表"

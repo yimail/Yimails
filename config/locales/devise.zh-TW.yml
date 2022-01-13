@@ -5,10 +5,27 @@ zh-TW:
         current_password: "當前密碼"
         email: "電子郵箱"
         password: "密碼"
+        firstname: "姓氏"
+        lastname: "名字"
+        username: "電子郵箱"
+        backup_email: "備用信箱"
         password_confirmation: "密碼確認"
         remember_me: "記憶登入訊息"
     models:
       user: "用戶"
+  errors:
+    format: '%{attribute}%{message}'
+    messages:
+      blank: '不能為空白'
+      invalid: '無效'
+      already_confirmed: "已經驗證，請直接登入。"
+      confirmation_period_expired: "必須在 %{period} 內驗證，請重新申請。"
+      expired: "已經過期，請重新申請。"
+      not_found: "找不到。"
+      not_locked: "並未被鎖定。"
+      not_saved:
+        one: "有一個錯誤導致 %{resource} 不能被儲存："
+        other: "有 %{count} 個錯誤導致 %{resource} 不能被儲存："
   devise:
     confirmations:
       new:
@@ -100,27 +117,18 @@ zh-TW:
       updated_not_active: "您的密碼已被修改。"
     registrations:
       destroyed: "再會！您的帳號已被取消。有緣再會。"
-      signed_up: "註冊成功，歡迎！"
+      signed_up: "註冊成功，歡迎來探索Yimail的世界"
       signed_up_but_inactive: "您已註冊成功。然而因為您的帳號尚未啓動，暫時無法登入，抱歉！"
       signed_up_but_locked: "您已註冊成功。 然而因為您的帳號已被鎖定，暫時無法登入，抱歉！"
       signed_up_but_unconfirmed: "確認信件已送至您的 Email 信箱，請點擊信件內連結以啓動您的帳號。"
       update_needs_confirmation: "您已經成功的更新帳號資訊，但我們仍需確認您的電子信箱，請至新信箱收信並點擊連結以確認您的新電子郵件帳號。"
-      updated: "您已經成功的更新帳號資訊。"
+      updated: "密碼已更新，要記得喔!"
     sessions:
-      signed_in: "成功登入了。"
-      signed_out: "成功登出了。"
-      already_signed_out: "成功登出了。"
+      signed_in: "歡迎一起Yimail"
+      signed_out: "您已登出離開Yimail, 希望很快能再見到您!"
+      already_signed_out: "您已登出離開Yimail, 希望很快能再見到您!"
     unlocks:
       send_instructions: "您將在幾分鐘後收到一封電子郵件，內有將帳號解除鎖定的步驟說明。"
       send_paranoid_instructions: "如果您的帳號已存在，您的電子信箱將會收到如何解鎖帳號的指示。"
       unlocked: "您的帳號已被解鎖，現在已經登入。"
-  errors:
-    messages:
-      already_confirmed: "已經驗證，請直接登入。"
-      confirmation_period_expired: "必須在 %{period} 內驗證，請重新申請。"
-      expired: "已經過期，請重新申請。"
-      not_found: "找不到。"
-      not_locked: "並未被鎖定。"
-      not_saved:
-        one: "有一個錯誤導致 %{resource} 不能被儲存："
-        other: "有 %{count} 個錯誤導致 %{resource} 不能被儲存："
+  
