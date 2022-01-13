@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
       collection do
         post :trash
+        post :add_labels
         post :add_label
         post :delete_label
       end
