@@ -1,13 +1,13 @@
 <div class="container pt-24 md:pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 
   <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-    <h1 class="my-4 text-3xl md:text-5xl text-blue-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
+    <h1 class="my-4 text-3xl md:text-5xl text-blue-800 font-bold leading-tight text-left slide-in-bottom-h1">
       您的鼓勵和支持</br>是Yimail進步的動力
     </h1>
-    <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle ">
+    <p class="leading-normal text-base md:text-2xl mb-8 text-left slide-in-bottom-subtitle ">
       Yimail將會持續優化，為您提供更多服務
     </p>
-    <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">
+    <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-left fade-in">
       歡迎留下您的鼓勵或任何建議
     </p>
 
@@ -22,17 +22,17 @@
       </div>
     
       <%= form_with(model: @orders) do |form| %>
-        <div>
+        <div class="w-64 my-3">
           <%= form.label :我是 %>
-          <%= form.text_field :我是, class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+          <%= form.text_field :我是, class:"bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
         </div>
     
-        <div>
+        <div class="w-64 my-3">
           <%= form.label :悄悄話 %>
-          <%= form.text_field :悄悄話, placeholder: "我想和Yimail說...", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+          <%= form.text_area :悄悄話, placeholder: "我想和Yimail說...", class:"bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
         </div>
         
-          <%= form.submit :按我抖內支持Yimail, class:"text-center w-full bg-blue-500 hover:bg-blue-700 text-white font-bold border-b-4 border-blue-600 hover:border-blue rounded-lg" %>
+          <%= form.submit :按我抖內支持Yimail, class:"my-3 text-center w-max-content bg-blue-500 hover:bg-blue-700 text-white font-bold border-b-4 border-blue-600 hover:border-blue rounded-lg bg-red-500" %>
       <% end %>
     <% end %>
   </div>
