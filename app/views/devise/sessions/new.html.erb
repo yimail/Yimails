@@ -1,4 +1,4 @@
-<div class="w-4/12 mx-auto mt-10">
+<div class="max-w-sm mx-auto mt-10">
   <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-full p-4 sm:p-6 lg:p-8">
     <h3 class="text-xl font-medium text-gray-900">登入</h3>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,17 +15,8 @@
         <%= f.password_field :password, autocomplete: "current-password", class:"bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" %>
       </div>
 
-      <div class="flex items-start py-3">
-        <% if devise_mapping.rememberable? %>
-          <div class="field flex items-center h-5">
-            <%= f.check_box :remember_me, id:"remember", type:"checkbox", class:"bg-gray-50 border border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded"%>
-            <%= f.label :記得我, for:"remember", class:"font-medium text-gray-900 dark:text-gray-300 text-sm ml-3" %>
-          </div>
-        <% end %>
-      </div>
-
       <div class="actions">
-        <%= f.submit "登入", class:"w-full mb-7 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" %>
+        <%= f.submit "登入", class:"w-full my-7 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer" %>
       </div>
     <% end %>
 
