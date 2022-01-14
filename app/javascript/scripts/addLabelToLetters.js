@@ -25,7 +25,7 @@ document.addEventListener('turbolinks:load',()=>{
   labelItems.forEach((label)=>{
     label.addEventListener('click', (e)=> {
       const labelId = Number(e.target.dataset.id);
-      httpClient.post(`/api/letters/add_labels`,{
+      httpClient.post(`/api/letters/add_label_to_letters`,{
         letter_ids: checkedLetters, label_id:labelId
       }).then((data)=>{
         window.location.href = window.location.pathname;

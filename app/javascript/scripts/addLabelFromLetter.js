@@ -9,8 +9,6 @@ document.addEventListener('turbolinks:load',()=>{
     label.addEventListener('click', (e)=>{
       const letterId = Number(window.location.pathname.slice(9));
       const labelId = Number(e.target.dataset.id);
-      console.log(letterId);
-      console.log(labelId);
       httpClient.post(`/api/letters/add_label`,{
         letter_id: letterId, label_id: labelId
       }).then((data)=>{
