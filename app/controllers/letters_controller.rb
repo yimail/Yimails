@@ -69,7 +69,7 @@ class LettersController < ApplicationController
   def retrieve
     @letter = current_user.letters.with_deleted.find(params[:id])
     @letter.restore
-    redirect_back(fallback_location: letter_path)
+    redirect_to trash_letters_path
   end
 
   def search
