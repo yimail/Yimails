@@ -1,6 +1,5 @@
 class LettersController < ApplicationController
   before_action :authenticate_user!, :label_folder
-  before_action :current_user_email, only:[:trash]
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show, :search]
 
   def index
@@ -26,7 +25,6 @@ class LettersController < ApplicationController
   def create
     @letter = current_user.letters.build(letter_params)
     @letter[:sender] = current_user.email
-    @letter[:status] = 1
 
     if @letter.save
       UserSendEmailJob.perform_later(@letter)
@@ -55,7 +53,6 @@ class LettersController < ApplicationController
   def update
     @letter = current_user.letters.build(letter_params)
     @letter[:sender] = current_user.email
-    @letter[:status] = 1
     
     if @letter.save
       UserSendEmailJob.perform_later(@letter)
@@ -82,11 +79,6 @@ class LettersController < ApplicationController
   private
   def letter_params
     params.require(:letter).permit(:sender, :recipient, :subject, :content, :body, :carbon_copy, :star, :blind_carbon_copy, :attachments, :deleted_at, :status)
-  end
-
-  def current_user_email 
-    current_user_email = current_user.email
-    UserSendEmailJob.perform_later(@letter)
   end
 
   def show_label_list
