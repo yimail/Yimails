@@ -63,7 +63,7 @@ class LettersController < ApplicationController
   def destroy
     @letter = Letter.find(params[:id])
     @letter.destroy
-    redirect_back(fallback_location: letter_path)
+    redirect_to letters_path
   end
 
   def retrieve
