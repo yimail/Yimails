@@ -1,0 +1,13 @@
+var labelIndexContainer = document.querySelector('#labelIndexContainer')
+var labelIndex = document.querySelector('#labelIndex')
+var closeBtn = document.querySelector('#indexcloseBtn')
+
+labelIndexContainer.style.display = 'block'
+
+closeBtn.addEventListener("click", () => {
+  if(labelIndexContainer.style.display = 'block') {
+    labelIndexContainer.style.display = 'none'
+  }
+})
+
+labelIndex.innerHTML = `<%= j render 'index', label: @label %>`

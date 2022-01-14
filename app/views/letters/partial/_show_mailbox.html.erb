@@ -33,17 +33,19 @@
             </svg>            
           </a>
           <%# label選單 %>
-          <div class="dropdown inline-block relative items-center mr-10">
+          <div class="dropdown inline-block relative items-center mr-10" id='labelBtn'>
             <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
               </svg>            
             </a>
-            <ul class="dropdown-content w-32  absolute hidden text-gray-700 pt-1">
-              <% labels.each do |label| %> 
-                <li class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
+            <ul class="dropdown-content min-w-max absolute hidden text-gray-700 pt-1">
+              <% @labels.each do |label| %> 
+                <li data-id='<%= label.id%>' id='labelItemInShow'
+                    class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
               <% end %>
-              <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" %></li>
+                <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
+                <li><%= link_to '標籤列表', labels_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
             </ul>
           </div>
         </div>

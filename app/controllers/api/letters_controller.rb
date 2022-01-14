@@ -20,14 +20,22 @@ class Api::LettersController < ApplicationController
     end
   end
   
-  def add_label
+  def add_label_to_letters
     letter_ids = params[:letter_ids]
-    label = Label.find(params[:label_id])
+    label = current_user.labels.find(params[:label_id])
     letter_ids.each do |id|
       letter = Letter.find(id)
       letter.labels << label
       letter.save
     end
+  end
+
+  def add_label
+    letter_id = params[:letter_id]
+    label = current_user.labels.find(params[:label_id])
+    letter = Letter.find(letter_id)
+    letter.labels << label
+    letter.save
   end
 
   def delete_label

@@ -1,0 +1,13 @@
+var labelNewContainer = document.querySelector('#labelNewContainer')
+var labelNew = document.querySelector('#labelNew')
+var closeBtn = document.querySelector('#closeBtn')
+
+labelNewContainer.style.display = 'block'
+
+closeBtn.addEventListener("click", () => {
+  if(labelNewContainer.style.display = 'block') {
+    labelNewContainer.style.display = 'none'
+  }
+})
+
+labelNew.innerHTML = `<%= j render 'new', label: @label %>`
