@@ -88,9 +88,4 @@ class LettersController < ApplicationController
   def label_folder
     @label_folder = Label.order(:hierarchy)
   end
-
-  def hello
-    current_user.letters
-
-  end
 end

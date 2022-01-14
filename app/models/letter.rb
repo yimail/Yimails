@@ -9,7 +9,6 @@ class Letter < ApplicationRecord
   has_many :labels, through: :letter_with_labels
   has_many_attached :attachments
 
-  # validates_each :attachments, less_than: 0.megabytes
   validates :recipient, presence: true, format: { with: Devise.email_regexp }
 
   enum status: {
