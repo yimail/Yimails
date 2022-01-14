@@ -1,26 +1,44 @@
-<h1 class="text-2xl">只要$60，便可升級使用標籤!買起來~~</h1>
+<div class="container pt-24 md:pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 
-<%=form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", method: "post" do |form| %>
+  <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+    <h1 class="my-4 text-3xl md:text-5xl text-blue-800 font-bold leading-tight text-left slide-in-bottom-h1">
+      您的鼓勵和支持</br>是Yimail進步的動力
+    </h1>
+    <p class="leading-normal text-base md:text-2xl mb-8 text-left slide-in-bottom-subtitle ">
+      Yimail將會持續優化，為您提供更多服務
+    </p>
+    <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-left fade-in">
+      歡迎留下您的鼓勵或任何建議
+    </p>
 
-  <div class="hidden">
-    <%= @form_info %>
-    <%= form.text_field :MerchantID, value: @form_info[:MerchantID] %>
-    <%= form.text_field :TradeInfo, value: @form_info[:TradeInfo] %>
-    <%= form.text_field :TradeSha, value: @form_info[:TradeSha] %>
-    <%= form.text_field :Version, value: @form_info[:Version] %>
+    <%=form_with url: "https://ccore.newebpay.com/MPG/mpg_gateway", method: "post" do |form| %>
+
+      <div class="hidden">
+        <%= @form_info %>
+        <%= form.text_field :MerchantID, value: @form_info[:MerchantID] %>
+        <%= form.text_field :TradeInfo, value: @form_info[:TradeInfo] %>
+        <%= form.text_field :TradeSha, value: @form_info[:TradeSha] %>
+        <%= form.text_field :Version, value: @form_info[:Version] %>
+      </div>
+    
+      <%= form_with(model: @orders) do |form| %>
+        <div class="w-64 my-3">
+          <%= form.label :我是 %>
+          <%= form.text_field :我是, class:"bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+        </div>
+    
+        <div class="w-64 my-3">
+          <%= form.label :悄悄話 %>
+          <%= form.text_area :悄悄話, placeholder: "我想和Yimail說...", class:"bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+        </div>
+        
+          <%= form.submit :按我抖內支持Yimail, class:"my-3 text-center w-max-content bg-blue-500 hover:bg-blue-700 text-white font-bold border-b-4 border-blue-600 hover:border-blue rounded-lg bg-red-500" %>
+      <% end %>
+    <% end %>
   </div>
 
-  <%= form_with(model: @orders) do |form| %>
-    <div>
-      <%= form.label :姓名 %>
-      <%= form.text_field :姓名 %>
-    </div>
-
-    <div>
-      <%= form.label :地址 %>
-      <%= form.text_field :地址 %>
-    </div>
-    
-      <%= form.submit :確認付款 %>
-  <% end %>
-<% end %>
+  <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
+    <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="/donate_coffee.jpg">
+  </div>
+  
+</div>
