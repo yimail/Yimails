@@ -20,7 +20,7 @@ class User < ApplicationRecord
     self.letters.create(
       subject: "Hello", 
       recipient: self.email,
-      body: "歡迎使用Yimail",
+      body: "歡迎使用Yimail! 簡單介面、輕鬆編輯，是您電子郵件的最佳選擇",
       status: 0
     )
   end
