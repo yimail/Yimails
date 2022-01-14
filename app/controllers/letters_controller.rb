@@ -73,7 +73,7 @@ class LettersController < ApplicationController
   end
 
   def search
-    @letters = Letter.joins(:rich_text_content).where("sender LIKE ? or recipient LIKE ? or subject LIKE ? or action_text_rich_texts.body LIKE ?" , "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    @letters = current_user.letters.joins(:rich_text_content).where("sender LIKE ? or recipient LIKE ? or subject LIKE ? or action_text_rich_texts.body LIKE ?" , "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(id: :desc)
   end
 
   private
