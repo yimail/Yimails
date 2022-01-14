@@ -45,9 +45,6 @@ gem 'devise-authy', '~> 2.3'
 # 軟刪除
 gem 'paranoia', '~> 2.5'
 
-#  防止短時間多次發送表單
-gem 'invisible_captcha', '~> 2.0'
-
 # ActiveJob存放工作排程的gem 
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.6'
 
