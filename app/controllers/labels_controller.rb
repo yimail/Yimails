@@ -27,7 +27,7 @@ class LabelsController < ApplicationController
     if @label.save
       redirect_to letters_path
     else
-      render :new
+      redirect_to labels_path
     end
   end
 

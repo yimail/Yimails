@@ -29,7 +29,7 @@
                       class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
                 <% end %>
                   <li><%= link_to "#{t("create_label")}", new_label_path, remote: true, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
-                  <li><%= link_to "#{t("label_list")}", labels_path, remote: true, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
+                  <li><%= link_to "#{t("label_list")}", labels_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
               </ul>
             </div>
             <%# 回報為垃圾信件 %>
@@ -139,27 +139,6 @@
       <div class="relative p-6 flex-auto">
         <div id="labelNew">
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%# index label modal  %>
-<div id="labelIndexContainer" class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center backdrop-sepia bg-opacity-60 bg-gray-500">
-  <div class="w-4/12 mx-auto mt-10">
-    <div class="bg-white shadow-md border border-gray-200 rounded-lg p-4">
-    <!--header-->
-    <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-      <h3 class="text-2xl font-semibold">
-        標籤列表
-      </h3>
-      <button id ="indexcloseBtn" class="p-1 ml-auto bg-transparent hover:bg-gray-200 hover:text-gray-900" >
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
-      </button>
-    </div>
-    <!--body-->
-    <div class="relative p-6 flex-auto">
-      <div id="labelIndex">
       </div>
     </div>
   </div>
