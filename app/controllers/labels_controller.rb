@@ -50,6 +50,10 @@ class LabelsController < ApplicationController
   end
   
   def destroy
+    letters_with_label = LetterWithLabel.where(label_id: params[:id])
+    letters_with_label.each do |letter_with_label|
+      letter_with_label.delete
+    end
     @label.destroy
     redirect_to labels_path
   end
