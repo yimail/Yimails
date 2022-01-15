@@ -1,12 +1,12 @@
 <div class="container pt-24 md:pt-32 px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
   <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
-    <% if @response.status === "SUCCESS"%>
+    <% if @response.status === "SUCCESS" %>
       <h1 class="my-4 text-3xl md:text-5xl text-blue-800 font-bold leading-tight text-left slide-in-bottom-h1">
-        <%= "Yimail感謝您的支持！" %>
+        Yimail感謝您的支持！
       </h1>
     <% else %>    
       <h1 class="my-4 text-3xl md:text-5xl text-blue-800 font-bold leading-tight text-left slide-in-bottom-h1">
-        <%= "不明原因失敗，請重試一次" %>
+        不明原因失敗，請重試一次
       </h1>
     <% end %>
       
