@@ -63,13 +63,13 @@ class LettersController < ApplicationController
   def destroy
     @letter = Letter.find(params[:id])
     @letter.destroy
-    redirect_back(fallback_location: letter_path)
+    redirect_to letters_path
   end
 
   def retrieve
     @letter = current_user.letters.with_deleted.find(params[:id])
     @letter.restore
-    redirect_back(fallback_location: letter_path)
+    redirect_to trash_letters_path
   end
 
   def search
