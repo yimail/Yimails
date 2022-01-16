@@ -2,7 +2,7 @@
   <%= form_with(model: @label) do |form| %>
     <div class="relative">
       <%= form.label :請輸入新的標籤名稱：, for:"title", class:"text-base leading-7 text-blueGray-500" %>
-      <%= form.text_field :title ,type:"text", class:"w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" %>
+      <%= form.text_field :title ,type:"text", placeholder:"必填且不重複", class:"w-full px-4 py-2 mt-2 mr-4 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-gray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2" %>
     </div>
     <div class="relative pt-4">
       <%= form.label :於下方標籤底下建立巢狀標籤：, for:"group", class:"text-base leading-7 text-blueGray-500" %>
