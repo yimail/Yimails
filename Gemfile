@@ -4,7 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.4'
 
 # Language switching
-gem 'i18n', '~> 1.6'
+gem 'rails-i18n', '~> 7.0', '>= 7.0.1'
+gem 'devise-i18n', '~> 1.10.1'
 # Paginator
 gem 'kaminari', '~> 1.2.1'
 # Authentication
