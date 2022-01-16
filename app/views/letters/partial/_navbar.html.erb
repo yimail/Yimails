@@ -1,8 +1,13 @@
 <%# navbar %>
-<div id= navbar> 
+<div id= navbar>
   <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
       <div class="flex items-center">
+      	<div class="lg:hidden">
+          <button id="sidebarBtn" class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 w-full">
+            <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
+          </button>
+		    </div>
         <%# logo %>
         <div class="w-1/6 flex items-center justify-start ml-3">
           <%= link_to letters_path do %>
@@ -22,11 +27,10 @@
             <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"rounded-xl border border-gray-300 text-gray-900 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600 w-full pl-10 p-2.5" %>
           <% end %>
         </div>
-        <div class=" flex items-center ml-auto" >
         <%# 漢堡選單 %>
         <div class="flex items-center ml-auto">
           <div class="dropdown inline-block relative items-center mr-10">
-            <div class="flex justify-items-center bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded items-center">
+            <div class="flex justify-items-center bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg items-center">
               <a href="#"><svg class="h-8 w-8 text-gray-500 mr-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </a>
               <%= current_user.username %>
@@ -53,9 +57,9 @@
 </div>
 
 <%# sidebar %>
-<div id=sidebar class="flex overflow-hidden bg-white pt-16 w-4/12">
-  <aside id="sidebar" class="fixed hidden z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
-    <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
+<div class="flex overflow-hidden bg-white pt-16 w-4/12">
+  <aside id="sidebar" class="lg:flex hidden fixed z-20 h-full top-0 left-0 pt-16 flex-shrink-0 flex-col w-64 transition-width duration-75 backdrop-sepia bg-opacity-60 bg-gray-500" >
+    <div class="h-screen relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <div class="flex-1 px-3 bg-white divide-y space-y-1">
           <ul class="space-y-2 pb-2">
@@ -167,3 +171,5 @@
     </div>
   </div>
 </div>
+
+<div id="sidebarBackdrop" class="bg-gray-500 opacity-50 hidden fixed inset-0 z-10" ></div>
