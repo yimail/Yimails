@@ -13,10 +13,12 @@ class Api::LettersController < ApplicationController
   end
 
   def trash
-    letter_ids = params[:letter_ids]
-    letter_ids.each do |id|
-      letter = Letter.find(id)
-      letter.destroy
+    if params[:letter_ids]
+      letter_ids = params[:letter_ids]
+      letter_ids.each do |id|
+        letter = Letter.find(id)
+        letter.destroy
+      end
     end
   end
   
