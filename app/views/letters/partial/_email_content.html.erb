@@ -90,7 +90,11 @@
                     <%= link_to letter_path(letter.id) do %>
                       <div class="w-full flex justify-items-center">
                         <div class="w-1/5 p-4 items-center whitespace-nowrap  text-base font-semibold text-gray-900 truncate overflow-hidden">
-                          <%= letter.recipient_name %>
+                          <% if letter.recipient_name.present? %>
+                            <%= letter.recipient_name %>
+                          <% else %>
+                            <%= letter.sender %>
+                          <% end %>
                         </div>
                         <div class="w-4/6 flex p-4 text-base text-gray-900 overflow-hidden truncate max-w-sm md:max-w-lg">
                           <% letter.labels.each do |label|%>
