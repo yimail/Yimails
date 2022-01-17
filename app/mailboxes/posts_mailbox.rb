@@ -7,6 +7,7 @@ class PostsMailbox < ApplicationMailbox
       user.letters.create(
         subject: mail.subject,
         recipient: recipient,
+        recipient_name: mail[:from].display_names.first,
         sender: mail.from.to_s[2..-3],
         body: body,
         attachments: attachments.map{ |a| a[:blob] },
