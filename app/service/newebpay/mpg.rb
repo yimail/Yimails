@@ -30,7 +30,7 @@ module Newebpay
       info[:TimeStamp] = Time.now.to_i.to_s
       info[:RespondType] = "JSON"
       info[:Version] = "1.5"
-      info[:ReturnURL] = 'https://yimails.com/payment_response'
+      info[:ReturnURL] = 'https://yimails.com/orders/payment_response'
       info[:NotifyURL] = ''
       info[:LoginType] = 0
       info[:CREDIT] = 1
