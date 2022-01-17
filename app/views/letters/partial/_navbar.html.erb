@@ -1,8 +1,13 @@
 <%# navbar %>
-<div id= navbar> 
+<div id= navbar>
   <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
       <div class="flex items-center">
+      	<div class="lg:hidden">
+          <button id="sidebarBtn" class="text-base text-gray-500 font-normal rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 w-full">
+            <svg class="block h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
+          </button>
+        </div>
         <%# logo %>
         <div class="w-1/6 flex items-center justify-start ml-3">
           <%= link_to letters_path do %>
@@ -12,7 +17,7 @@
           <% end %>
         </div>
         <%# 搜尋列 %>
-        <div class="w-3/6 mt-1 relative">
+        <div class="w-3/6 mt-1 relative hidden lg:block">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
@@ -22,11 +27,10 @@
             <%= text_field_tag :search, params[:search], placeholder: "Search...",class:"rounded-xl border border-gray-300 text-gray-900 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600 w-full pl-10 p-2.5" %>
           <% end %>
         </div>
-        <div class=" flex items-center ml-auto" >
         <%# 漢堡選單 %>
         <div class="flex items-center ml-auto">
           <div class="dropdown inline-block relative items-center mr-10">
-            <div class="flex justify-items-center bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded items-center">
+            <div class="flex justify-items-center bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg items-center">
               <a href="#"><svg class="h-8 w-8 text-gray-500 mr-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </a>
               <%= current_user.username %>
@@ -53,9 +57,9 @@
 </div>
 
 <%# sidebar %>
-<div id=sidebar class="flex overflow-hidden bg-white pt-16 w-4/12">
-  <aside id="sidebar" class="fixed hidden z-20 h-full top-0 left-0 pt-16 lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
-    <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
+<div class="flex overflow-hidden bg-white pt-16 w-4/12">
+  <aside id="sidebar" class="lg:flex hidden fixed z-20 h-full top-0 left-0 pt-16 flex-shrink-0 flex-col w-64 transition-width duration-75 backdrop-sepia bg-opacity-60 bg-gray-500" >
+    <div class="h-screen relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
       <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <div class="flex-1 px-3 bg-white divide-y space-y-1">
           <ul class="space-y-2 pb-2">
@@ -113,7 +117,7 @@
             <%# 垃圾桶 %>
             <li>
               <%= link_to trash_letters_path do %>
-                <div href="#" class="folderBtn text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group" data-route='/letters/trash'>
+                <div class="folderBtn text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group" data-route='/letters/trash'>
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd"></path>
                   </svg>
@@ -143,6 +147,8 @@
     </div>
   </aside>
 </div>
+<%# 點選漢堡背景色 %>
+<div id="sidebarBackdrop" class="bg-gray-500 opacity-50 hidden fixed inset-0 z-10 lg:hidden"></div>
 
 <%# new letter modal  %>
 <div id="newletterModal" class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center backdrop-sepia bg-opacity-60 bg-gray-500">

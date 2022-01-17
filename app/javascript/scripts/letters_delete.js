@@ -24,11 +24,17 @@ document.addEventListener('turbolinks:load', () => {
 
   if (trashBtn) {
     trashBtn.addEventListener("click", () => {
-      httpClient.post(`/api/letters/trash`,{
-        letter_ids: checkedLetters
-      }).then((data) => {
-        window.location.href = window.location.pathname;
-      })
+      if (checkedLetters == false){
+        return
+      }else{
+        if (confirm("確定要刪除嗎？") == true) {
+          httpClient.post(`/api/letters/trash`,{
+            letter_ids: checkedLetters
+          }).then((data) => {
+            window.location.href = window.location.pathname;
+          })
+        }
+      }
     })
   }
 })
