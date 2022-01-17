@@ -59,7 +59,7 @@
           <div class="align-middle inline-block min-w-full">
             <div class="shadow overflow-hidden">
               <% letters.each do |letter| %>
-                <div class="w-full letter_container flex hover:bg-gray-200 border <%= letter.read ? 'bg-gray-100 ' : 'bg-white font-bold'%>">
+                <div class="w-full letter_container flex hover:bg-gray-200 border <%= letter.read ? 'bg-gray-100' : 'bg-white font-bold'%>">
                   <%# checkbox %>
                   <div data-id='<%= letter.id %>' id="letterItem"
                        class="flex w-10 mr-2 items-center justify-center">
