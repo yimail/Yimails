@@ -27,7 +27,7 @@ class LabelsController < ApplicationController
     if @label.save
       redirect_to letters_path
     else
-      render :new
+      redirect_to labels_path
     end
   end
 
@@ -50,8 +50,18 @@ class LabelsController < ApplicationController
   end
   
   def destroy
-    @label.destroy
-    redirect_to labels_path
+    label_to_be_deleted = current_user.labels.find(params[:id])
+    label_hierarchy = label_to_be_deleted.hierarchy
+    labels_under_hierarchy = Label.where("hierarchy like  ? ", "%#{label_hierarchy}%")
+    labels_id_under_hierarchy = labels_under_hierarchy.ids
+    labels_id_under_hierarchy.each do |label_id|
+      letters_with_label = LetterWithLabel.where(label_id: label_id)
+      letters_with_label.each do |letter_with_label|
+        letter_with_label.delete
+      end
+      Label.destroy(label_id)
+    end
+    redirect_to letters_path
   end
 
   private
