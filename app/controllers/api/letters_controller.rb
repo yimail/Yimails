@@ -16,8 +16,12 @@ class Api::LettersController < ApplicationController
     if params[:letter_ids]
       letter_ids = params[:letter_ids]
       letter_ids.each do |id|
-        letter = Letter.find(id)
-        letter.destroy
+        letter = Letter.with_deleted.find(id)
+        if letter.deleted_at
+          letter.really_destroy!
+        else
+          letter.destroy
+        end
       end
     end
   end
