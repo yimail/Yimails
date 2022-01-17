@@ -61,8 +61,12 @@ class LettersController < ApplicationController
   end
 
   def destroy
-    @letter = Letter.find(params[:id])
-    @letter.destroy
+    @letter = Letter.with_deleted.find(params[:id])
+    if @letter.deleted_at
+      @letter.really_destroy!
+    else
+      @letter.destroy
+    end
     redirect_to letters_path
   end
 
