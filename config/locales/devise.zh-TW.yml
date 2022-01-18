@@ -124,7 +124,7 @@ zh-TW:
       update_needs_confirmation: "您已經成功的更新帳號資訊，但我們仍需確認您的電子信箱，請至新信箱收信並點擊連結以確認您的新電子郵件帳號。"
       updated: "密碼已更新，要記得喔!"
     sessions:
-      signed_in: "歡迎一起Yimail"
+      signed_in: ''
       signed_out: "您已登出離開Yimail, 希望很快能再見到您!"
       already_signed_out: "您已登出離開Yimail, 希望很快能再見到您!"
     unlocks:

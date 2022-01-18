@@ -1,4 +1,5 @@
 <%= render "letters/partial/navbar", labels: @label_folder %>
+<%= render "letters/partial/label_new"%>
 <%# email-content %>
   <div id="main-content" class="h-screen lg:ml-64 ml-auto bg-gray-50 relative overflow-y-auto">
     <div class="lg:mt-1.5">
@@ -29,8 +30,8 @@
                   <li data-id='<%= label.id%>' id='labelItem'
                       class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><%= label.hierarchy %></li>
                 <% end %>
-                  <li><%= link_to '建立標籤', new_label_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
-                  <li><%= link_to '標籤列表', labels_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
+                  <li><%= link_to "#{t("create_label")}", new_label_path, remote: true, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
+                  <li><%= link_to "#{t("label_list")}", labels_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
               </ul>
             </div>
             <%# 回報為垃圾信件 %>
@@ -65,7 +66,7 @@
           <div class="align-middle inline-block min-w-full">
             <div class="shadow overflow-hidden">
               <% @letters.each do |letter| %>
-                <div class="w-full letter_container flex hover:bg-gray-100 border">
+                <div class="w-full letter_container flex hover:bg-gray-200 border <%= letter.read ? 'bg-gray-100' : 'bg-white font-bold'%>">
                   <%# checkbox %>
                   <div data-id='<%= letter.id %>' id="letterItem"
                        class="flex w-10 mr-2 items-center justify-center">
@@ -105,8 +106,8 @@
                               <%= label.title %>
                             </div>
                           <% end %>
-                          <div class="font-bold mr-6">
-                            <%= letter.subject %>
+                          <div class="mr-6">
+                            <%= letter.subject %> -
                           </div>
                           <div class="max-h-6 font-light max-w-sm xl:max-w-screen-md 2xl:max-w-screen-lg truncate">
                             <%= letter.content %>
