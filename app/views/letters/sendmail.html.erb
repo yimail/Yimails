@@ -6,11 +6,6 @@
       <div class="relative p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5">
         <%# 所有小圖示列 %>
         <div class="flex items-center divide-x divide-gray-100">
-          <%# 全選 %>
-          <div class="pr-3">
-            <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-cyan-200 h-4 w-4 rounded">
-            <label for="checkbox-all" class="sr-only">checkbox</label>
-          </div>
           <div class="flex space-x-2 px-0 sm:px-2">
             <%# 垃圾桶 %>
             <%= link_to trash_api_letters_path, method: 'trash' do %>
@@ -34,20 +29,12 @@
                   <li><%= link_to "#{t("label_list")}", labels_path, class:"rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap font-bold" %></li>
               </ul>
             </div>
-            <%# 回報為垃圾信件 %>
-            <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd">
-                </path>
-              </svg>
-            </a>
             <%# 更多選項 %>
             <a href="#" class="text-gray-500 hover:text-gray-900 cursor-pointer p-1 hover:bg-gray-100 rounded inline-flex justify-center">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
             </a>
           </div>
         </div>
-
         <%# 頁碼 %>
         <div class="sm:flex items-center space-y-3 sm:space-y-0 space-x-0 sm:space-x-3">
           <%= paginate @letters %>                 
