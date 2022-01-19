@@ -7,7 +7,7 @@
        %>
     </h2>
     <ul>
-      <% resource.errors.full_messages.each do |message| unless value.blank? %>
+      <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

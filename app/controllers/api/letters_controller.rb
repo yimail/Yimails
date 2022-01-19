@@ -20,6 +20,10 @@ class Api::LettersController < ApplicationController
         if letter.deleted_at
           letter.really_destroy!
         else
+          letter_with_labels = LetterWithLabel.where(letter_id: id)
+          letter_with_labels.each do |letter_with_label|
+            letter_with_label.delete
+          end
           letter.destroy
         end
       end
