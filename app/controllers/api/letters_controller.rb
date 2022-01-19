@@ -34,18 +34,22 @@ class Api::LettersController < ApplicationController
     letter_ids = params[:letter_ids]
     label = current_user.labels.find(params[:label_id])
     letter_ids.each do |id|
-      letter = Letter.find(id)
-      letter.labels << label
-      letter.save
+      if !LetterWithLabel.where(label_id: label, letter_id: id).present?
+        letter = Letter.find(id)
+        letter.labels << label
+        letter.save
+      end
     end
   end
 
   def add_label
     letter_id = params[:letter_id]
     label = current_user.labels.find(params[:label_id])
-    letter = Letter.find(letter_id)
-    letter.labels << label
-    letter.save
+    if !LetterWithLabel.where(label_id: params[:label_id], letter_id: letter_id).present?
+      letter = Letter.find(letter_id)
+      letter.labels << label
+      letter.save
+    end
   end
 
   def delete_label
