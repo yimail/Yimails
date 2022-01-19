@@ -14,3 +14,9 @@ zh-TW:
   log_out: "登出"
   create_label: "建立標籤"
   label_list: "標籤列表"
+  views:
+    pagination:
+      first: ""
+      last: ""
+      previous: "<"
+      next: ">"

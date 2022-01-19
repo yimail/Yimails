@@ -35,7 +35,7 @@ class LabelsController < ApplicationController
     @labels = current_user.labels.order(:hierarchy)
     @label_folder = current_user.labels.order(:hierarchy)
     label = current_user.labels.find(params[:id])
-    @letters = label.letters.order(id: :desc).page(params[:page]).per(25)
+    @letters = label.letters.order(id: :desc).page(params[:page]).per(10)
   end
 
   def edit
