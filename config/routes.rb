@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :reply
       get :forwarded
       patch :retrieve
+      get :plain
     end
   end
 

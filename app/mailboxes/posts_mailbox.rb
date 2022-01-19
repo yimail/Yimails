@@ -32,6 +32,7 @@ class PostsMailbox < ApplicationMailbox
       document = Nokogiri::HTML(mail.html_part.body.decoded)
 
       attachments.map do |attachment_hash|
+        byebug  
         attachment = attachment_hash[:original]
         blob = attachment_hash[:blob]
 

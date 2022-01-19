@@ -35,7 +35,12 @@ class LettersController < ApplicationController
   end
 
   def show
-    @letter = Letter.with_deleted.find(params[:id])
+    @letter = current_user.letters.with_deleted.find(params[:id])
+  end
+
+  def plain
+    @letter = current_user.letters.with_deleted.find(params[:id])
+    render :plain, layout: 'plain'
   end
 
   def reply
@@ -46,6 +51,7 @@ class LettersController < ApplicationController
 
   def forwarded
     @letter = current_user.letters.find(params[:id])
+    byebug
     @letter[:recipient] = ""
     @letter[:subject] = "FW: " + @letter[:subject]
   end
@@ -77,7 +83,7 @@ class LettersController < ApplicationController
   end
 
   def search
-    @letters = current_user.letters.where("sender ILIKE ? or recipient ILIKE ? or subject ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(id: :desc).page(params[:page]).per(25)
+    @letters = current_user.letters.where("sender ILIKE ? or recipient ILIKE ? or subject ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(id: :desc).page(params[:page]).per(25)
   end
 
   private

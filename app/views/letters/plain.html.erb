@@ -1,0 +1,9 @@
+<%= @letter.body %>
+          <%= link_to reply_letter_path(@letter), remote: true do %>
+            <div class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center w-full sm:w-auto mr-3">
+              <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+              </svg>
+              回信
+            </div>
+          <% end %>

@@ -1,6 +1,7 @@
 class LetterMailer < ApplicationMailer
   def new_letter(letter)
     @letter = letter
+    byebug
     mail(
       from: @letter.sender,
       to: [@letter.recipient],
