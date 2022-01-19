@@ -48,6 +48,7 @@ GitHub: https://github.com/jiayi1113
 Email: amsmm265@gmail.com 
 #### 陳怡璇 Dana
 GitHub: https://github.com/danactw
+Email: danac.tw@gmail.com
 #### 林怡禎 Jennifer
 GitHub: https://github.com/Jennifer7793
 Email: jennifer7793@gmail.com
