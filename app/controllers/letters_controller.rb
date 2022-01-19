@@ -81,7 +81,7 @@ class LettersController < ApplicationController
   end
 
   def search
-    @letters = current_user.letters.where("sender ILIKE ? or recipient ILIKE ? or subject ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(id: :desc).page(params[:page]).per(10)
+    @letters = current_user.letters.where("sender ILIKE ? or recipient ILIKE ? or subject ILIKE ? or recipient_name ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(id: :desc).page(params[:page]).per(10)
   end
 
   private
