@@ -3,7 +3,7 @@
     <div class="md:flex items-center">
       <div class="md:w-1/2 w-full flex flex-col">
         <%= form.label :收件者, for:"recipient", class:"font-semibold leading-none" %>
-        <%= form.text_field :recipient, required: true ,pattern:'[^@]+@[^@]+\.[a-zA-Z]{2,6}',type:"text", placeholder: "5xruby@yimails.com", class:"leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200" %>
+        <%= form.text_field :recipient, required: true ,pattern:'^(\w)+(.\w+)@(\w)+((.\w+)+)$',type:"text", placeholder: "5xruby@yimails.com", class:"leading-none text-gray-900 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-100 border rounded border-gray-200" %>
       </div>
       <div class="md:w-1/2 w-full flex flex-col md:ml-6 md:mt-0 mt-4">
         <%= form.label :副本, for:"carbon_copy", class:"font-semibold leading-none" %>
