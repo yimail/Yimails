@@ -9,7 +9,7 @@ class Letter < ApplicationRecord
   has_many :labels, through: :letter_with_labels
   has_many_attached :attachments
 
-  validates :recipient, presence: true, format: { with: Devise.email_regexp }
+  # validates :recipient, presence: true, format: { with: Devise.email_regexp }
 
   enum status: {
     received: 0,
