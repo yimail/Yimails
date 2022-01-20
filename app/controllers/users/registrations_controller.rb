@@ -10,7 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     @user[:email] = "#{@user.username}@yimails.com"
     if @user.save
-      redirect_to user_session_path
+      sign_in(@user)
+      redirect_to letters_path
     else 
       render :new
     end
