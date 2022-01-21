@@ -19,9 +19,11 @@ class User < ApplicationRecord
   def create_hello_letter
     self.letters.create(
       subject: "Hello", 
+      sender: self.email,
       recipient: self.email,
       body: "歡迎使用Yimail! 簡單介面、輕鬆編輯，是您電子郵件的最佳選擇",
-      status: 0
+      status: 0,
+      recipient_name: self.email.gsub(/@yimails.com/, "")
     )
   end
 end

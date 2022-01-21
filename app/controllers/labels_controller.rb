@@ -42,7 +42,10 @@ class LabelsController < ApplicationController
   end
 
   def update 
-    if @label.update(label_params)
+    new_title = label_params[:title]
+    new_hierarchy = @label.group ? "#{@label.group}/#{new_title}" : new_title
+    
+    if @label.update(title: new_title, display: new_title, hierarchy: new_hierarchy)
       redirect_to labels_path
     else
       render :edit
