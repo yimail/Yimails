@@ -3,19 +3,19 @@ class LettersController < ApplicationController
   before_action :show_label_list, only:[:index, :starred, :sendmail, :trash, :show, :search]
 
   def index
-    @letters = current_user.letters.where(status: "received").order(created_at: :desc).page(params[:page]).per(10)
+    @letters = current_user.letters.where(status: "received").order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def starred
-    @letters = current_user.letters.where(star: true).order(created_at: :desc).page(params[:page]).per(10)
+    @letters = current_user.letters.where(star: true).order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def sendmail
-    @letters = current_user.letters.where(status: "sent").order(created_at: :desc).page(params[:page]).per(10)
+    @letters = current_user.letters.where(status: "sent").order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def trash
-    @letters = current_user.letters.only_deleted.order(created_at: :desc).page(params[:page]).per(10)
+    @letters = current_user.letters.only_deleted.order(created_at: :desc).page(params[:page]).per(25)
   end
 
   def new
