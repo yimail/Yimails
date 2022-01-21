@@ -58,7 +58,7 @@ class Api::LettersController < ApplicationController
   end
 
   def read
-    @letter = Letter.find(params[:letterId])
+    @letter = Letter.with_deleted.find(params[:letterId])
     if !@letter.read
       @letter.update(read: true)
     end
