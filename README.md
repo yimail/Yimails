@@ -39,7 +39,7 @@ You’ve got yimail!
 ### Yimail成員 
 
 #### 鄭詩諺
-GitHub: https://github.com/el19u​
+GitHub: https://github.com/el19u
 #### 鄧皓澤 Erik
 GitHub: https://github.com/E4ik
 Email: jjjay5223758@gmail.com​
